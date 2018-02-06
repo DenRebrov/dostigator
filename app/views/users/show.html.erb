@@ -1,10 +1,37 @@
 <%# Представление на странице пользователя %>
 <div class="text-center">
   <h1><%= @user.name %></h1>
-  <h1><%= @user.targets.name %></h1>
+  <%= link_to "Редактипровать профиль", edit_user_path, class: 'btn btn-default' %>
+</div>
 
+<%= link_to "Назначить цель", new_target_path, class: 'btn btn-success' %>
   <%#= image_tag user_avatar(@user) %>
 
   <%# if @user == current_user %>
   <%# end %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="text-center"><h1>Я хочу</h1></div>
+
+      <% @targets.each do |target| %>
+        <%= render partial: 'targets/target', object: target %>
+      <% end %>
+
+      <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
+      <%#= render partial: 'targets/target', collection: @targets %>
+    </div>
+
+    <div class="col-md-6">
+      <div class="text-center"><h1>Я достиг</h1></div>
+
+      <% @targets.each do |target| %>
+        <%= render partial: 'targets/target', object: target %> <%# if target.completed == true %>
+      <% end %>
+      <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
+      <%#= render partial: 'targets/target', collection: @targets %>
+    </div>
+  </div>
 </div>

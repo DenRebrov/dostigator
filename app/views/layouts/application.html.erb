@@ -51,7 +51,7 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse pull-right">
           <ul class="nav navbar-form">
             <% if user_signed_in? %>
-              <%= link_to "Мой профиль", current_user, class: 'btn btn-info' %>
+              <%= link_to "#{} Мой профиль", current_user, class: 'btn btn-info' %>
               <%= link_to "Выйти", destroy_user_session_path, class: 'btn btn-danger' %>
             <% else %>
               <%= link_to "Зарегистрироваться", new_user_registration_path, class: 'btn btn-success' %>
@@ -74,14 +74,7 @@
           <%#= yield %>
         </div>
         <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li><%= link_to "Link 1", root_path, class: 'label label-info' %></li>
-              <li><%= link_to "Link 1", root_path, class: 'label label-info' %></li>
-              <li><%= link_to "Link 1", root_path, class: 'label label-info' %></li>
-            </ul>
-          </div><!--/.well -->
+
         </div><!--/span-->
       </div><!--/row-->
 

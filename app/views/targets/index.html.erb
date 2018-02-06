@@ -21,14 +21,19 @@
   </tr>
   </thead>
 
-  <tbody>
+  <% @targets.each do |target| %>
   <tr>
-    <% @targets.each do |target| %>
-      <td><%= @user.name %></td>
-      <td><%= target.title %></td>
-      <td><%= target.date %></td>
+    <td><%= link_to target.user.name, user_path(@user) %></td>
+    <td><%= link_to target.title, target_path(target) %></td>
+    <td><%= target.date %></td>
+    <% if target.status == 1 %>
       <td><span class="label label-success">Успех</span></td>
+    <% else %>
+      <td><span class="label label-info">В прогрессе</span></td>
     <% end %>
   </tr>
-  </tbody>
+  <% end %>
 </table>
+
+
+

@@ -20,6 +20,11 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'
 
+# в продакшен сервере heroku этот гем соединяет с базой данных Postgres
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'listen'
 

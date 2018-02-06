@@ -10,6 +10,7 @@ class TargetsController < ApplicationController
 
   def index
     @targets = Target.all
+
     @user = User.find_by(params[:target])
   end
 
@@ -18,6 +19,8 @@ class TargetsController < ApplicationController
 
   def new
     @target = current_user.targets.build
+
+    @target.status = 1
   end
 
   def edit
@@ -27,7 +30,7 @@ class TargetsController < ApplicationController
     @target = current_user.targets.build(target_params)
 
     if @target.save
-      redirect_to @target, notice: 'Цель определена!'
+      redirect_to current_user, notice: 'Цель определена!'
     else
       render :new
     end
@@ -57,6 +60,6 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    params.require(:target).permit(:title, :description, :date)
+    params.require(:target).permit(:title, :description, :date, :completed)
   end
 end
