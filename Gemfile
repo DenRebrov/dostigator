@@ -11,6 +11,12 @@ gem 'rails', '~> 5.1.4'
 # гем, предоставляющий возможности для аутентификации в rails-приложениях
 gem 'devise'
 
+# гем для перевода сообщений девайса
+gem 'devise-i18n'
+
+# гем для перевода сообщений девайса
+gem 'russian'
+
 # гем, интегрирующий bootstrap
 gem 'twitter-bootstrap-rails'
 
@@ -20,8 +26,11 @@ gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
 gem 'uglifier', '>= 1.3.0'
 
-# в продакшен сервере heroku этот гем соединяет с базой данных Postgres
+# гем для поддержки jquery
+gem 'jquery-rails'
+
 group :production do
+  # в продакшен сервере heroku этот гем соединяет с базой данных Postgres
   gem 'pg'
 end
 

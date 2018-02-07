@@ -1,0 +1,30 @@
+<%# Паршал для отображения формы полей пользователя для редактирования %>
+<%= form_for @user, html: {multipart: true} do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: @user} %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :birthday %>
+    <%= f.date_select :birthday, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.text_field :email, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :ava %>
+    <p><%#= image_tag(@user.avatar.thumb.url) if @user.avatar? %></p>
+    <%= f.file_field :ava %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+    <%= link_to 'Назад', current_user, class: 'btn btn-default' %>
+  </div>
+<% end %>

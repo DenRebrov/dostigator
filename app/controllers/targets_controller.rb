@@ -14,8 +14,7 @@ class TargetsController < ApplicationController
     @user = User.find_by(params[:target])
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @target = current_user.targets.build
@@ -23,14 +22,13 @@ class TargetsController < ApplicationController
     @target.status = 1
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @target = current_user.targets.build(target_params)
 
     if @target.save
-      redirect_to current_user, notice: 'Цель определена!'
+      redirect_to current_user, notice: I18n.t('controllers.targets.created')
     else
       render :new
     end
@@ -38,7 +36,7 @@ class TargetsController < ApplicationController
 
   def update
     if @target.update(target_params)
-      redirect_to @target, notice: 'Цель изменена'
+      redirect_to @target, notice: I18n.t('controllers.targets.updated')
     else
       render :edit
     end
@@ -46,7 +44,7 @@ class TargetsController < ApplicationController
 
   def destroy
     @target.destroy
-    redirect_to targets_url, notice: 'Цель была удалена'
+    redirect_to targets_url, I18n.t('controllers.targets.destroyed')
   end
 
   private
@@ -60,6 +58,6 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    params.require(:target).permit(:title, :description, :date, :completed)
+    params.require(:target).permit(:title, :description, :date, :status)
   end
 end

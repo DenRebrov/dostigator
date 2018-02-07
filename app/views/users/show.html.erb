@@ -1,14 +1,16 @@
 <%# Представление на странице пользователя %>
-<div class="text-center">
-  <h1><%= @user.name %></h1>
-  <%= link_to "Редактипровать профиль", edit_user_path, class: 'btn btn-default' %>
+<div class="container">
+  <div class="col-md-6">
+    <%= image_tag user_avatar(@user) %>
+  </div>
+
+  <div class="col-md-6">
+    <h1><%= @user.name %></h1>
+    <%= link_to "Редактипровать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %>
+    <%= link_to "Моя цель", new_target_path, class: 'btn btn-success button-round' if @user == current_user %>
+  </div>
 </div>
 
-<%= link_to "Назначить цель", new_target_path, class: 'btn btn-success' %>
-  <%#= image_tag user_avatar(@user) %>
-
-  <%# if @user == current_user %>
-  <%# end %>
 
 
 <div class="container">

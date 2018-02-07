@@ -1,7 +1,19 @@
-.text-white {
-    color: white;
+.text-bold {
+    font-weight: bold;
 }
 
-.border-frame {
-    background-color: gray;
+.button-round {
+    height: 150px;
+    width: 150px;
+    border: none;
+    color: white;
+    padding-top: 55px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50%;
+    border: 3px solid greenyellow;
 }

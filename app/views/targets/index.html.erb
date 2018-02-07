@@ -2,15 +2,6 @@
   <h1>Цели наших пользователей</h1>
 </div>
 
-<%#= @user.name %>
-<div class="text-white border-frame">
-  <%# @targets.each do |target| %>
-    <h1><%#= target.title %></h1>
-    <h3><%#= target.date %></h3>
-    <%#= target.description %>
-  <%# end %>
-</div>
-
 <table class="table table-striped">
   <thead>
   <tr>
@@ -23,14 +14,13 @@
 
   <% @targets.each do |target| %>
   <tr>
-    <td><%= link_to target.user.name, user_path(@user) %></td>
-    <td><%= link_to target.title, target_path(target) %></td>
+    <td><%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
+    <td><%= link_to target.title, target_path(target), class: "btn btn-default" %></td>
     <td><%= target.date %></td>
-    <% if target.status == 1 %>
+    <%# if target.status == 1 %>
       <td><span class="label label-success">Успех</span></td>
-    <% else %>
-      <td><span class="label label-info">В прогрессе</span></td>
-    <% end %>
+    <%# else %>
+    <%# end %>
   </tr>
   <% end %>
 </table>

@@ -1,0 +1,45 @@
+ru:
+  # Перевод моделей
+  activerecord:
+    # Перевод названия моделей
+    models:
+      user: 'Пользователь'
+      target: 'Цель'
+      comment: 'Комментарий'
+      photo: 'Фотография'
+
+    # Перевод названий аттрибутов моделей
+    attributes:
+      user:
+        email: 'Email'
+        name: 'Имя'
+        birthday: 'Дата рождения'
+        ava: 'Аватар'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      target:
+        title: 'Название'
+        date: 'Дата завершения'
+        description: 'Описание'
+      comment:
+        user_name: 'Ваше имя'
+        body: 'Комментарий'
+      photo:
+        photo: 'Фотография'
+
+  # Перевод сообщений, которые отправляет контроллер
+  controllers:
+    targets:
+      created: 'Цель задана!'
+      updated: 'Вы обновили цель'
+      destroyed: 'Вы удалили вашу цель :('
+    users:
+      updated: 'Вы обновили свой профиль'
+    comments:
+      created: 'Ваш комментарий добавлен'
+      destroyed: 'Комментарий удален'
+      error: 'Ошибка с комментарием'
+    photos:
+      error: 'Что-то не так с фоткой'
+      created: 'Вы добавили фотографию к событию'
+      destroyed: 'Вы удалили фотку'
