@@ -43,3 +43,33 @@ ru:
       error: 'Что-то не так с фоткой'
       created: 'Вы добавили фотографию к событию'
       destroyed: 'Вы удалили фотку'
+
+ # Перевод названия приложения и компании-разработчика
+  comments:
+    comment:
+      destroy_confirm: 'Вы уверены, что хотите удалить этот комменатрий?'
+
+  targets:
+    target:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту цель?'
+
+  photos:
+    photo:
+      destroy_confirm: 'Вы уверены, что хотите удалить эту фоточку?'
+
+  event_mailer:
+    comment:
+      title: 'Новый комментарий'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'
+
+    photo:
+      title: 'Новая фоточка'
+      name: 'Имя'
+      email: 'Email'
+      author: 'Автор'
+      event: 'Событие'
+      datetime: 'Состоится'
+      owner: 'Организатор'

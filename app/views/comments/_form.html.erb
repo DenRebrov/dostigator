@@ -1,0 +1,15 @@
+<%# паршал формы коммента %>
+<%= form_for [@target, comment] do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: comment} %>
+
+  <%# тело комментария %>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control' %>
+  </div>
+
+  <%# кнопка "отправить" %>
+  <div class="actions">
+    <%= f.submit 'Отправить', class: 'btn btn-primary' %>
+  </div>
+<% end %>

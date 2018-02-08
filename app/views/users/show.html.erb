@@ -1,39 +1,31 @@
 <%# Представление на странице пользователя %>
 <div class="container">
-  <div class="col-md-6">
+  <div class="col-md-4">
     <%= image_tag user_avatar(@user) %>
   </div>
 
-  <div class="col-md-6">
+  <div class="col-md-8">
     <h1><%= @user.name %></h1>
-    <%= link_to "Редактипровать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %>
+    <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %><br />
     <%= link_to "Моя цель", new_target_path, class: 'btn btn-success button-round' if @user == current_user %>
   </div>
 </div>
 
-
-
 <div class="container">
   <div class="row">
+    <div class="text-center"><h1>Мои достижения</h1></div>
+
     <div class="col-md-6">
-      <div class="text-center"><h1>Я хочу</h1></div>
-
-      <% @targets.each do |target| %>
-        <%= render partial: 'targets/target', object: target %>
-      <% end %>
-
       <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
-      <%#= render partial: 'targets/target', collection: @targets %>
+      <% @targets.each do |target| %>
+        <%= render partial: 'targets/target', object: target if target.status == 0 %>
+      <% end %>
     </div>
 
     <div class="col-md-6">
-      <div class="text-center"><h1>Я достиг</h1></div>
-
       <% @targets.each do |target| %>
-        <%= render partial: 'targets/target', object: target %> <%# if target.completed == true %>
+        <%= render partial: 'targets/target', object: target if target.status == 1 %>
       <% end %>
-      <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
-      <%#= render partial: 'targets/target', collection: @targets %>
     </div>
   </div>
 </div>

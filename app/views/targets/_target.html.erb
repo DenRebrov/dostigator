@@ -10,6 +10,11 @@
           <h3><%#= link_to user.name, target_path(target) %></h3>
           <h3><%= link_to target.title, target_path(target) %></h3>
           <h3><small><%= l target.date, format: :long %></small></h3>
+          <% if target.status == 1 %>
+            <td><span class="label label-success">Успех</span></td>
+          <% else %>
+            <td><span class="label label-primary">В прогрессе</span></td>
+          <% end %>
         </div>
       </div>
     </div>

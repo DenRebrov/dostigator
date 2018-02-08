@@ -1,0 +1,25 @@
+<%# паршал комментариев %>
+<div class="buffer-bottom thumbnail">
+  <p><%= comment.body %></p>
+  <hr>
+  <p>
+    <span>
+      <% if comment.user.present? %>
+        <%= render partial: 'users/user', object: comment.user %>
+      <% else %>
+        <strong><%= comment.user_name %></strong>
+      <% end %>
+    </span>
+    <em><%= l comment.created_at, format: :long %></em>
+
+    <%# удалять свой комментарий может только автор этого комментария %>
+    <% if current_user_can_edit?(comment) %>
+      <%= link_to "Удалить",
+                  target_comment_path(comment.target, comment),
+                  method: :delete,
+                  data: {confirm: t('.destroy_confirm')},
+                  class: "label label-danger" %>
+    <% end %>
+  </p>
+</div>
+

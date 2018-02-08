@@ -14,12 +14,12 @@ class TargetsController < ApplicationController
     @user = User.find_by(params[:target])
   end
 
-  def show; end
+  def show
+    @new_comment = @target.comments.build(params[:comment])
+  end
 
   def new
     @target = current_user.targets.build
-
-    @target.status = 1
   end
 
   def edit; end
@@ -44,7 +44,7 @@ class TargetsController < ApplicationController
 
   def destroy
     @target.destroy
-    redirect_to targets_url, I18n.t('controllers.targets.destroyed')
+    redirect_to current_user, notice: I18n.t('controllers.targets.destroyed')
   end
 
   private

@@ -14,3 +14,29 @@
  *= require_text
  *= require_self
  */
+
+/* Buffers */
+.buffer-top {
+    margin-top: 20px;
+}
+
+.buffer-bottom {
+    margin-bottom: 20px;
+}
+
+.buffer-both {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.img-icon, .img-icon-small {
+    height: 50px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.brd {
+    border: 4px double black; /* Параметры границы */
+    background: papayawhip; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+}

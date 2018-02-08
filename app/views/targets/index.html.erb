@@ -7,7 +7,7 @@
   <tr>
     <th>Пользователь</th>
     <th>Цель</th>
-    <th>Дата</th>
+    <th>Дата реализации</th>
     <th>Результат</th>
   </tr>
   </thead>
@@ -16,11 +16,12 @@
   <tr>
     <td><%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
     <td><%= link_to target.title, target_path(target), class: "btn btn-default" %></td>
-    <td><%= target.date %></td>
-    <%# if target.status == 1 %>
+    <td><%= l target.date, format: :long %></td>
+    <% if target.status == 1 %>
       <td><span class="label label-success">Успех</span></td>
-    <%# else %>
-    <%# end %>
+    <% else %>
+      <td><span class="label label-primary">В прогрессе</span></td>
+    <% end %>
   </tr>
   <% end %>
 </table>

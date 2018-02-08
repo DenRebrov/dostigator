@@ -1,6 +1,6 @@
 <%# Паршиал дляотображения формы создания нового  %>
 <%= form_for(@target) do |f| %>
-  <%#= render partial: 'partials/form_errors', locals: {model: @event} %>
+  <%= render partial: 'partials/form_errors', locals: {model: @target} %>
 
   <div class="form-group">
     <%= f.label :title %>
@@ -8,13 +8,24 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :date %>
-    <p><%= f.date_select :date, class: 'form-control' %></p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date,
+                      {order: [:year, :month, :day],
+                       prompt: { day: 'День', month: 'Месяц', year: 'Год' },
+                       start_year: Date.today.year + 10, end_year: Date.today.year - 100},
+                      {required: true} %>
   </div>
 
   <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.radio_button :status, 0 %>
+    <%= label :status_incomplete, 'Цель в прогрессе...', class: '' %><br />
+    <%= f.radio_button :status, 1 %>
+    <%= label :status_complete, 'Цель достигнута!', class: '' %>
   </div>
 
   <div class="actions">
