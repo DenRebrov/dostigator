@@ -52,11 +52,11 @@
           <ul class="nav navbar-form">
             <% if user_signed_in? %>
               <%#= link_to "Назначить цель", new_target_path, class: 'btn btn-success' %>
-              <%= link_to "#{current_user.name} - профиль", current_user, class: 'btn btn-info' %>
               <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: 'btn btn-danger' %>
+              <%= link_to "#{current_user.name} - профиль", current_user, class: 'btn btn-default' %>
             <% else %>
-              <%= link_to "Регистрация", new_user_registration_path, class: 'btn btn-success' %>
               <%= link_to "Вход", new_user_session_path, class: 'btn btn-primary' %>
+              <%= link_to "Регистрация", new_user_registration_path, class: 'btn btn-success' %>
             <% end %>
           </ul>
         </div>

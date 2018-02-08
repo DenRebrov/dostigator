@@ -6,7 +6,7 @@ class Target < ApplicationRecord
 
   validates :user, presence: true
 
-  validates :title, presence: true, length: {maximum: 255}
+  validates :title, presence: true, length: {maximum: 60}
 
   validates :status, presence: true
 

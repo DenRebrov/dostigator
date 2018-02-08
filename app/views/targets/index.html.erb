@@ -14,7 +14,8 @@
 
   <% @targets.each do |target| %>
   <tr>
-    <td><%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
+    <td><%= image_tag(user_avatar(target.user), class: 'img-icon') %>
+      <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
     <td><%= link_to target.title, target_path(target), class: "btn btn-default" %></td>
     <td><%= l target.date, format: :long %></td>
     <% if target.status == 1 %>
@@ -25,6 +26,3 @@
   </tr>
   <% end %>
 </table>
-
-
-

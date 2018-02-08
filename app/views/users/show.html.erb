@@ -1,7 +1,7 @@
 <%# Представление на странице пользователя %>
 <div class="container">
   <div class="col-md-4">
-    <%= image_tag user_avatar(@user) %>
+    <%= image_tag user_avatar(@user), class: 'img-medium thumbnail' %>
   </div>
 
   <div class="col-md-8">
@@ -13,7 +13,6 @@
 
 <div class="container">
   <div class="row">
-    <div class="text-center"><h1>Мои достижения</h1></div>
 
     <div class="col-md-6">
       <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>

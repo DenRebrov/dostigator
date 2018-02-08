@@ -2,3 +2,22 @@
   Place all the styles related to the matching controller here.
   They will automatically be included in application.css.
 */
+
+.target-comment-form-border {
+    border: 4px double black; /* Параметры границы */
+    background-color: whitesmoke;
+    padding: 10px; /* Поля вокруг текста */
+    margin-top: 10px;
+}
+
+.comment-border {
+    border: 1px solid black; /* Параметры границы */
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.target-black-border {
+    background: black; /* Цвет фона */
+    padding: 10px; /* Поля вокруг текста */
+    margin-top: 10px;
+}

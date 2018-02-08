@@ -21,6 +21,12 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :ava %>
+      <p><%= image_tag(@user.ava.thumb.url) if @user.ava? %></p>
+      <%= f.file_field :ava %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, class: "form-control" %>
     </div>

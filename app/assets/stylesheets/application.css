@@ -30,13 +30,12 @@
 }
 
 .img-icon, .img-icon-small {
-    height: 50px;
+    height: 40px;
     width: auto;
     border-radius: 50%;
 }
 
-.brd {
-    border: 4px double black; /* Параметры границы */
-    background: papayawhip; /* Цвет фона */
-    padding: 10px; /* Поля вокруг текста */
+.img-medium {
+    height: 300px;
+    width: auto;
 }
