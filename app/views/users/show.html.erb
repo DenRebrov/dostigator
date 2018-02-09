@@ -4,17 +4,26 @@
     <%= image_tag user_avatar(@user), class: 'img-medium thumbnail' %>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-8 text-center">
     <h1><%= @user.name %></h1>
-    <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %><br />
-    <%= link_to "Моя цель", new_target_path, class: 'btn btn-success button-round' if @user == current_user %>
+    <div class="buffer-top">
+      <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %>
+    </div>
+    <div class="buffer-top">
+      <%= link_to "Моя цель", new_target_path, class: 'btn btn-success button-round' if @user == current_user %>
+    </div>
   </div>
 </div>
+
 
 <div class="container">
   <div class="row">
 
+    <hr>
+
     <div class="col-md-6">
+      <div class="thumbnail text-center text-L"><p>Я хочу</p></div>
+
       <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
       <% @targets.each do |target| %>
         <%= render partial: 'targets/target', object: target if target.status == 0 %>
@@ -22,6 +31,8 @@
     </div>
 
     <div class="col-md-6">
+      <div class="thumbnail text-center text-L"><p>Я достиг</p></div>
+
       <% @targets.each do |target| %>
         <%= render partial: 'targets/target', object: target if target.status == 1 %>
       <% end %>

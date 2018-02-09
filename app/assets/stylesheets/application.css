@@ -39,3 +39,10 @@
     height: 300px;
     width: auto;
 }
+
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: black; /* Цвет линии для остальных браузеров */
+    background-color: black; /* Цвет линии для браузера Firefox и Opera */
+    height: 1px; /* Толщина линии */
+}

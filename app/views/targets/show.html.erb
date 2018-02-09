@@ -1,4 +1,4 @@
-<div class="col-md-9 target-comment-form-border">
+<div class="col-md-9 target-form-border container">
   <div class="">
     <h1><%= @target.title %></h1>
     <%= l @target.created_at, format: :long %>
@@ -15,15 +15,15 @@
   <% end %>
 </div>
 
-<div class="row buffer-top"></div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 target-form-border">
+      <%= render partial: 'comments/form', locals: {comment: @new_comment || @target.comments.build} %>
+    </div>
 
-<div class="buffer-top">
-  <div class="col-md-4 target-comment-form-border">
-    <%= render partial: 'comments/form', locals: {comment: @new_comment || @target.comments.build} %>
-  </div>
-
-  <div class="col-md-5">
-    <%= render partial: 'comments/comment', collection: @target.comments.except(@new_comment) %>
+    <div class="col-md-4">
+      <%= render partial: 'comments/comment', collection: @target.comments.except(@new_comment) %>
+      </div>
   </div>
 </div>
 

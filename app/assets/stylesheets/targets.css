@@ -3,21 +3,25 @@
   They will automatically be included in application.css.
 */
 
-.target-comment-form-border {
-    border: 4px double black; /* Параметры границы */
+.target-form-border {
     background-color: whitesmoke;
-    padding: 10px; /* Поля вокруг текста */
-    margin-top: 10px;
-}
-
-.comment-border {
-    border: 1px solid black; /* Параметры границы */
+    padding: 15px; /* Поля вокруг текста */
     margin-top: 10px;
     border-radius: 5px;
 }
 
-.target-black-border {
-    background: black; /* Цвет фона */
-    padding: 10px; /* Поля вокруг текста */
+.target-form-border a {
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.target-form-border a:hover {
+    color: gray;
+}
+
+.comment-border {
+    background-color: #fff1c5;
     margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
 }

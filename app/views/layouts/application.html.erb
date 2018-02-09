@@ -48,10 +48,17 @@
 
         <%= link_to "Dostigator", root_path, class: 'navbar-brand' %>
 
+        <% if user_signed_in? %>
+          <div class="navbar-collapse collapse navbar-responsive-collapse pull-left">
+            <ul class="nav navbar-form">
+              <%= link_to "Назначить цель", new_target_path, class: 'btn btn-success' %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class="navbar-collapse collapse navbar-responsive-collapse pull-right">
           <ul class="nav navbar-form">
             <% if user_signed_in? %>
-              <%#= link_to "Назначить цель", new_target_path, class: 'btn btn-success' %>
               <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: 'btn btn-danger' %>
               <%= link_to "#{current_user.name} - профиль", current_user, class: 'btn btn-default' %>
             <% else %>

@@ -4,7 +4,15 @@
 
 .text-black {
     color: black;
-    text-decoration: none;
+}
+
+.text-white {
+    color: white;
+}
+
+.text-L {
+    font-size: 24px;
+    font-weight: bold;
 }
 
 .button-round {

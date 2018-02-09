@@ -1,5 +1,5 @@
 <%# паршал формы коммента %>
-<%= form_for [@target, comment] do |f| %>
+<%= form_for [@target, @user, comment] do |f| %>
   <%= render partial: 'partials/form_errors', locals: {model: comment} %>
 
   <%# тело комментария %>
@@ -11,6 +11,6 @@
   <%# кнопка "отправить" %>
   <div class="actions">
     <%= f.submit 'Отправить', class: 'btn btn-primary' %>
-    <%= link_to 'Назад', :back, class: 'btn btn-default' %>
+    <%= link_to 'Назад', (current_user.nil? ? :back : current_user), class: 'btn btn-default' %>
   </div>
 <% end %>
