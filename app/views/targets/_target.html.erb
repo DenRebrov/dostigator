@@ -1,16 +1,10 @@
 <%# Паршиал для отображения инфы об отдельной цели %>
 <div class="col-md-12">
-
-    <%#= content_tag 'div', '', class: 'event-background', style: "background-image: url(#{asset_path('event_thumb.jpg')})" %>
-
-    <div class="target-form-border ">
-        <h3><%= link_to target.title, target_path(target), class: "text-black" %></h3>
-        <h3><small><%= l target.date, format: :long %></small></h3>
-
-        <% if target.status == 1 %>
-          <td><span class="label label-success">Успех</span></td>
-        <% else %>
-          <td><span class="label label-primary">В прогрессе</span></td>
-        <% end %>
-      </div>
+  <%= content_tag :div, class: (target.status == 1 ? "target-form-border-success" : "target-form-border") do %>
+    <h3><%= link_to target.title, target_path(target), class: (target.status == 1 ? "text-dark-green" : "text-black") %></h3>
+    <h3><small><%= l target.date, format: :long %></small></h3>
+    <%= content_tag :span, class: (target.status == 1 ? "label label-success" : "label label-primary") do %>
+      <% if target.status == 1 %> Успех <% else %> В прогрессе <% end %>
+    <% end %>
+  <% end %>
 </div>

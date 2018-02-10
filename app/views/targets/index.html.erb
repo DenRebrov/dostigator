@@ -2,7 +2,7 @@
   <h1>Цели наших пользователей</h1>
 </div>
 
-<table class="table table-striped">
+<table class="table">
   <thead>
   <tr>
     <th>Пользователь</th>
@@ -16,10 +16,11 @@
   <tr>
     <td><%= image_tag(user_avatar(target.user), class: 'img-icon') %>
       <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
-    <td><%= link_to target.title, target_path(target), class: "btn btn-default" %></td>
-    <td><%= l target.date, format: :long %></td>
+
+    <td><%= link_to target.title, target_path(target), class: "" %></td>
+    <td><%= l target.date, format: :long, class: "buffer-top" %></td>
     <% if target.status == 1 %>
-      <td><span class="label label-success">Успех</span></td>
+      <td class="table-success"><span class="label label-success">Успех</span></td>
     <% else %>
       <td><span class="label label-primary">В прогрессе</span></td>
     <% end %>

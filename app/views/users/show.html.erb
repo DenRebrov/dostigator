@@ -6,6 +6,7 @@
 
   <div class="col-md-8 text-center">
     <h1><%= @user.name %></h1>
+
     <div class="buffer-top">
       <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %>
     </div>
@@ -15,12 +16,9 @@
   </div>
 </div>
 
-
 <div class="container">
   <div class="row">
-
     <hr>
-
     <div class="col-md-6">
       <div class="thumbnail text-center text-L"><p>Я хочу</p></div>
 

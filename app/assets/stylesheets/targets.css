@@ -3,10 +3,32 @@
   They will automatically be included in application.css.
 */
 
-.target-form-border {
-    background-color: whitesmoke;
+.target-form-border-success {
+    background-color: #adffd6;
     padding: 15px; /* Поля вокруг текста */
     margin-top: 10px;
+    border-radius: 5px;
+}
+
+.target-form-border-success a {
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.target-form-border-success a:hover {
+    color: white;
+}
+
+.target-form-border {
+    background-color: #dbeaff;
+    padding: 15px; /* Поля вокруг текста */
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.target-form-border-mini {
+    background-color: #dbeaff;
+    padding: 15px; /* Поля вокруг текста */
     border-radius: 5px;
 }
 
@@ -16,12 +38,21 @@
 }
 
 .target-form-border a:hover {
-    color: gray;
+    color: white;
+}
+
+.comment-form-border {
+    background-color: whitesmoke;
+    padding: 15px; /* Поля вокруг текста */
+    margin-top: 10px;
+    border-radius: 5px;
 }
 
 .comment-border {
     background-color: #fff1c5;
     margin-top: 10px;
-    padding: 12px;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 3px;
     border-radius: 5px;
 }
