@@ -3,41 +3,41 @@
   They will automatically be included in application.css.
 */
 
-.target-form-border-success {
+.target-border-success {
     background-color: #adffd6;
     padding: 15px; /* Поля вокруг текста */
     margin-top: 10px;
     border-radius: 5px;
 }
 
-.target-form-border-success a {
+.target-border-success a {
     text-decoration: none;
     transition: 0.2s;
 }
 
-.target-form-border-success a:hover {
+.target-border-success a:hover {
     color: white;
 }
 
-.target-form-border {
+.target-border {
     background-color: #dbeaff;
     padding: 15px; /* Поля вокруг текста */
     margin-top: 10px;
     border-radius: 5px;
 }
 
-.target-form-border-mini {
+.target-border-mini {
     background-color: #dbeaff;
-    padding: 15px; /* Поля вокруг текста */
+    padding: 5px; /* Поля вокруг текста */
     border-radius: 5px;
 }
 
-.target-form-border a {
+.target-border a {
     text-decoration: none;
     transition: 0.2s;
 }
 
-.target-form-border a:hover {
+.target-border a:hover {
     color: white;
 }
 
