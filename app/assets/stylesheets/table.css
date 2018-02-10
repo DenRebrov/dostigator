@@ -1,0 +1,17 @@
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 6px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: black; /* Цвет линии для остальных браузеров */
+    background-color: black; /* Цвет линии для браузера Firefox и Opera */
+    height: 1px; /* Толщина линии */
+}

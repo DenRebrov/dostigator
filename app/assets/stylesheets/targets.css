@@ -26,12 +26,6 @@
     border-radius: 5px;
 }
 
-.target-border-mini {
-    background-color: #dbeaff;
-    padding: 5px; /* Поля вокруг текста */
-    border-radius: 5px;
-}
-
 .target-border a {
     text-decoration: none;
     transition: 0.2s;

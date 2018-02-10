@@ -20,7 +20,7 @@
   <div class="row">
     <hr>
     <div class="col-md-6">
-      <div class="thumbnail text-center text-L"><p>Я хочу</p></div>
+      <div class="thumbnail text-center text-L buffer-top"><p>Я хочу</p></div>
 
       <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
       <% @targets.each do |target| %>
@@ -29,7 +29,7 @@
     </div>
 
     <div class="col-md-6">
-      <div class="thumbnail text-center text-L"><p>Я достиг</p></div>
+      <div class="thumbnail text-center text-L buffer-top"><p>Я достиг</p></div>
 
       <% @targets.each do |target| %>
         <%= render partial: 'targets/target', object: target if target.status == 1 %>
