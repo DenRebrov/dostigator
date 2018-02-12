@@ -1,15 +1,20 @@
 class AvaUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::MiniMagick
+  # Добавляем обработчик, чтобы можно было менять размер автарок
+  # и делать миниатюрные версии
   include CarrierWave::RMagick
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # Если мы работаем в локальной версии нашего приложения,
+  # аватарки хранятся прямо в файловой системе, иначе используем fog
+  # для загрузки их на Amazon S3
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
-  # Override the directory where uploaded files will be stored.
-  # This is a sensible default for uploaders that are meant to be mounted:
+  # Папка, в которой будут храниться все наши загруженные файлы
+  # например, uploads/avatar/avatat/1
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
@@ -22,7 +27,8 @@ class AvaUploader < CarrierWave::Uploader::Base
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
 
-  # Process files as they are uploaded:
+  # Аватарку, загруженную пользователем, надо обрезать/уменьшить
+  # так, чтобы получился квадрат 300x300
 
   process resize_to_fill: [300, 300]
 
@@ -32,7 +38,7 @@ class AvaUploader < CarrierWave::Uploader::Base
   #   # do something
   # end
 
-  # Create different versions of your uploaded files:
+  # А потом нужно сделать миниатюрную версию 100x100
 
   version :thumb do
     process resize_to_fit: [100, 100]

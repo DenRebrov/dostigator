@@ -35,6 +35,9 @@ gem 'carrierwave'
 # гем для обработки картинок
 gem 'rmagick'
 
+# гем для работы carrierwave с хранилищем Amazon S3
+gem 'fog-aws'
+
 group :production do
   # в продакшен сервере heroku этот гем соединяет с базой данных Postgres
   gem 'pg'

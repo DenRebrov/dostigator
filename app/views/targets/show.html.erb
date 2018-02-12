@@ -7,7 +7,7 @@
 
       <div class="col-md-8">
         <h1><%= @target.title %></h1>
-        <%= l @target.created_at, format: :long %>
+        <%= @target.description %>
         <h3><%= l @target.date, format: :long %></h3>
         <%= content_tag :span, class: (@target.status == 1 ? "label label-success" : "label label-primary") do %>
           <% if @target.status == 1 %> Успех <% else %> В прогрессе <% end %>
