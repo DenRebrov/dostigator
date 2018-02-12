@@ -32,12 +32,6 @@ class AvaUploader < CarrierWave::Uploader::Base
 
   process resize_to_fill: [300, 300]
 
-  # process scale: [200, 300]
-  #
-  # def scale(width, height)
-  #   # do something
-  # end
-
   # А потом нужно сделать миниатюрную версию 100x100
 
   version :thumb do
