@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @targets = @user.targets
+
+    @new_comment = @user.comments.build(params[:comment])
   end
 
   def edit; end

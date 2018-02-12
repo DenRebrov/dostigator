@@ -17,7 +17,8 @@
     <td><%= image_tag(user_avatar(target.user), class: 'img-icon') %>
       <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
 
-    <td><%= link_to target.title, target_path(target), class: (target.status == 1 ? "target-border-success text-dark-green" : "target-border text-black") %></td>
+    <td><%= link_to target.title, target_path(target), class: (target.status == 1 ? "target-border-success text-dark-green" :
+                                                                   "target-border text-black") %></td>
     <td><%= l target.date, format: :long %></td>
 
     <% if target.status == 1 %>
