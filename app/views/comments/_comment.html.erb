@@ -6,11 +6,7 @@
 
   <p>
     <span>
-      <% if comment.user.present? %>
-        <%= render partial: 'users/user', object: comment.user %>
-      <% else %>
-        <strong><%= comment.user_name %></strong>
-      <% end %>
+      <%= render partial: 'users/user', object: comment.user %>
     </span>
     <em><%= l comment.created_at, format: :long %></em>
 

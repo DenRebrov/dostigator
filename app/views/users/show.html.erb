@@ -29,10 +29,13 @@
   </div>
 </div>
 
-<ul class="nav nav-tabs buffer-top">
-  <li class="active"><%= link_to "Мои цели и достижения", user_path(@user) %></li>
-  <li><%= link_to "Комментарии", user_path(@user) %></li>
+<ul class="nav nav-tabs buffer-top text-bold text-M">
+  <li class="active"><%= link_to "Вкладка 1 (Активная)", user_path(@user) %></li>
+  <li><%#= link_to "Мои финансы", user_path(@user) if @user == current_user %></li>
+  <li><%= link_to "Вкладка 2", user_path(user_status: 'comments') %></li>
 </ul>
+
+<% if params[:user_status] == nil %>
 
 <div class="container">
   <div class="col-md-6">
@@ -49,4 +52,14 @@
       <%= render partial: 'targets/target', object: target if target.status == 1 %>
     <% end %>
   </div>
+</div>
+
+<%# elsif params[:user_status] == 'comments' %>
+<% else %>
+  <%= @user.name %>
+<% end %>
+
+
+<div class="">
+  <%#= render partial: 'comments/comment', collection: @target.except(@new_comment) %>
 </div>

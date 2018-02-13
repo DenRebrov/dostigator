@@ -12,7 +12,7 @@
   </tr>
   </thead>
 
-  <% @targets.each do |target| %>
+  <% @targets.order(:created_at).reverse_order.each do |target| %>
   <tr>
     <td><%= image_tag(user_avatar(target.user), class: 'img-icon') %>
       <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>

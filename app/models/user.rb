@@ -8,8 +8,6 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 20}
   validates :name, uniqueness: true
 
-  validates :birthday, presence: true
-
   # Добавляем аплоадер аватарок, чтобы заработал carrierwave
   mount_uploader :ava, AvaUploader
 end
