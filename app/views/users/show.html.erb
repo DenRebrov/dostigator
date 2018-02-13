@@ -15,46 +15,53 @@
       <% target_completed << target if target.status == 1 %>
     <% end %>
 
-    <div class="text-L">
-      <span class="label label-success">Достигнутые: <%= target_completed.size %></span>
-    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="text-L ">
+          <span class="label label-success">Достигнутые: <%= target_completed.size %></span>
+        </div>
+      </div>
 
-    <div class="text-L buffer-top">
-      <span class="label label-primary">В прогрессе: <%= (@targets - target_completed).size %></span>
-    </div>
+      <div class="col-md-4">
+        <div class="text-L ">
+          <span class="label label-primary">В прогрессе: <%= (@targets - target_completed).size %></span>
+        </div>
+      </div>
 
-    <div class="text-L buffer-top">
-      <span class="label label-default">Всего: <%= @targets.size %></span>
+      <div class="col-md-4">
+        <div class="text-L ">
+          <span class="label label-default">Всего: <%= @targets.size %></span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 
 <ul class="nav nav-tabs buffer-top text-bold text-M">
-  <li class="active"><%= link_to "Вкладка 1 (Активная)", user_path(@user) %></li>
+  <li class="active"><%= link_to "Мои цели и достижения", user_path(@user) %></li>
   <li><%#= link_to "Мои финансы", user_path(@user) if @user == current_user %></li>
-  <li><%= link_to "Вкладка 2", user_path(user_status: 'comments') %></li>
+  <li><%= link_to "Комментарии", user_path(user_tab: 'comments') %></li>
 </ul>
 
-<% if params[:user_status] == nil %>
+<% if params[:user_tab] == nil %>
+  <div class="container">
+    <div class="col-md-6">
+      <div class="thumbnail text-center text-L buffer-top"><p>Я хочу</p></div>
+      <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
+      <% @targets.order(:created_at).reverse_order.each do |target| %>
+        <%= render partial: 'targets/target', order: :created_at, object: target if target.status == 0 %>
+      <% end %>
+    </div>
 
-<div class="container">
-  <div class="col-md-6">
-    <div class="thumbnail text-center text-L buffer-top"><p>Я хочу</p></div>
-    <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
-    <% @targets.order(:created_at).reverse_order.each do |target| %>
-      <%= render partial: 'targets/target', order: :created_at, object: target if target.status == 0 %>
-    <% end %>
+    <div class="col-md-6">
+      <div class="thumbnail text-center text-L buffer-top"><p>Я достиг</p></div>
+      <% @targets.order(:created_at).reverse_order.each do |target| %>
+        <%= render partial: 'targets/target', object: target if target.status == 1 %>
+      <% end %>
+    </div>
   </div>
 
-  <div class="col-md-6">
-    <div class="thumbnail text-center text-L buffer-top"><p>Я достиг</p></div>
-    <% @targets.order(:created_at).reverse_order.each do |target| %>
-      <%= render partial: 'targets/target', object: target if target.status == 1 %>
-    <% end %>
-  </div>
-</div>
-
-<%# elsif params[:user_status] == 'comments' %>
+<%# elsif params[:user_tab] == 'comments' %>
 <% else %>
   <%= @user.name %>
 <% end %>
