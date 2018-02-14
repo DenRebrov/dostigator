@@ -1,8 +1,7 @@
 class Target < ApplicationRecord
-
   belongs_to :user, optional: true
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :user, presence: true
 

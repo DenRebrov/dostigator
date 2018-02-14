@@ -15,7 +15,9 @@ class TargetsController < ApplicationController
   end
 
   def show
-    @new_comment = @target.comments.build(params[:comment])
+    @commentable = @target
+    @comments = @commentable.comments
+    @comment = Comment.new
 
     @user = @target.user
   end

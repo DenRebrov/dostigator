@@ -13,8 +13,7 @@ class ApplicationController < ActionController::Base
   def current_user_can_edit?(model)
     # Если у модели есть юзер и он залогиненный, пробуем у модели взять .target и
     # если он есть, проверяем его юзера на равенство current_user.
-    user_signed_in? && (
-    model.user == current_user ||
+    user_signed_in? && (model.user == current_user ||
         (model.try(:target).present? && model.target.user == current_user)
     )
   end

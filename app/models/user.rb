@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   # юзер может создавать много целей, комментов
   has_many :targets, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :name, presence: true, length: {maximum: 20}
   validates :name, uniqueness: true

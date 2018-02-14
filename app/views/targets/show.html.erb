@@ -28,11 +28,10 @@
 
 <div class="container">
   <div class="col-md-4 comment-form-border">
-    <%= render partial: 'comments/form', locals: {comment: @new_comment || @target.comments.build} %>
+    <%= render partial: 'comments/form', locals: { commentable: @target } %>
   </div>
 
-  <div class="col-md-4">
-    <%= render partial: 'comments/comment', collection: @target.comments.order(:created_at).reverse_order.except(@new_comment) %>
+  <div class="col-md-8">
+    <%= render partial: 'comments/comments', locals: { commentable: @target } %>
   </div>
-
 </div>

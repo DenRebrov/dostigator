@@ -1,6 +1,6 @@
 <%# паршал формы коммента %>
-<%= form_for [@target, comment] do |f| %>
-  <%= render partial: 'partials/form_errors', locals: {model: comment} %>
+<%= form_for [@commentable, @comment] do |f| %>
+  <%= render partial: 'partials/form_errors', locals: { model: @comment } %>
 
   <%# тело комментария %>
   <div class="form-group">

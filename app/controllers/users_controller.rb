@@ -10,7 +10,9 @@ class UsersController < ApplicationController
 
     @targets = @user.targets
 
-    @new_comment = @user.comments.build(params[:comment])
+    @commentable = @user
+    @comments = @commentable.comments
+    @comment = Comment.new
   end
 
   def edit; end

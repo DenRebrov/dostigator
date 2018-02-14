@@ -5,17 +5,16 @@
   </div>
 
   <div class="col-md-8">
-    <div class="text-title">
+    <div class="text-title buffer-bottom">
       <%= @user.name %>
     </div>
-    <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default' if @user == current_user %>
-    <hr>
+    <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default buffer-bottom' if @user == current_user %>
     <% target_completed = [] %>
       <% @targets.each do|target| %>
       <% target_completed << target if target.status == 1 %>
     <% end %>
 
-    <div class="row">
+    <div class="row buffer-top">
       <div class="col-md-4">
         <div class="text-L ">
           <span class="label label-success">Достигнутые: <%= target_completed.size %></span>
@@ -34,20 +33,26 @@
         </div>
       </div>
     </div>
+
+    <ul class="nav nav-tabs buffer-top-max text-bold text-M">
+      <%= content_tag :li, class: (params[:user_tab] == nil ? "active" : "") do %>
+        <%= link_to "Цели и достижения", user_path(@user) %>
+      <% end %>
+      <%#= content_tag :li, class: (params[:user_tab] == 'finance' ? "active" : "") do %>
+      <%#= link_to "Мои финансы", user_path(user_tab: 'finance') %>
+      <%# end %>
+      <%= content_tag :li, class: (params[:user_tab] == 'comments' ? "active" : "") do %>
+        <%= link_to "Комментарии", user_path(user_tab: 'comments') %>
+      <% end %>
+    </ul>
   </div>
 </div>
 
-<ul class="nav nav-tabs buffer-top text-bold text-M">
-  <li class="active"><%= link_to "Мои цели и достижения", user_path(@user) %></li>
-  <li><%#= link_to "Мои финансы", user_path(@user) if @user == current_user %></li>
-  <li><%= link_to "Комментарии", user_path(user_tab: 'comments') %></li>
-</ul>
-
-<% if params[:user_tab] == nil %>
-  <div class="container">
+<div class="container">
+  <% if params[:user_tab] == nil %>
     <div class="col-md-6">
       <div class="thumbnail text-center text-L buffer-top"><p>Я хочу</p></div>
-      <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
+        <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
       <% @targets.order(:created_at).reverse_order.each do |target| %>
         <%= render partial: 'targets/target', order: :created_at, object: target if target.status == 0 %>
       <% end %>
@@ -59,14 +64,19 @@
         <%= render partial: 'targets/target', object: target if target.status == 1 %>
       <% end %>
     </div>
-  </div>
 
-<%# elsif params[:user_tab] == 'comments' %>
-<% else %>
-  <%= @user.name %>
-<% end %>
+  <%# elsif params[:user_tab] == 'finance' %>
 
+  <% elsif params[:user_tab] == 'comments' %>
+    <div class="container">
+      <div class="col-md-4 comment-form-border">
+        <%= render partial: 'comments/form', locals: { commentable: @user } %>
+      </div>
 
-<div class="">
-  <%#= render partial: 'comments/comment', collection: @target.except(@new_comment) %>
+      <div class="col-md-8">
+        <%= render partial: 'comments/comments', locals: { commentable: @user } %>
+      </div>
+    </div>
+  <% end %>
 </div>
+

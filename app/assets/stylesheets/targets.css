@@ -37,7 +37,7 @@
 
 .comment-form-border {
     background-color: whitesmoke;
-    padding: 15px; /* Поля вокруг текста */
+    padding: 12px; /* Поля вокруг текста */
     margin-top: 10px;
     border-radius: 5px;
 }
@@ -45,8 +45,6 @@
 .comment-border {
     background-color: #fff1c5;
     margin-top: 10px;
-    padding-left: 10px;
-    padding-top: 10px;
-    padding-bottom: 3px;
+    padding: 12px;
     border-radius: 5px;
 }

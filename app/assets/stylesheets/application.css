@@ -19,8 +19,20 @@
     margin-top: 20px;
 }
 
+.buffer-top-max {
+    margin-top: 50px;
+}
+
+.buffer-top-mini {
+    margin-top: 6px;
+}
+
 .buffer-bottom {
     margin-bottom: 20px;
+}
+
+.buffer-bottom-mini {
+    margin-bottom: 6px;
 }
 
 .buffer-both {
