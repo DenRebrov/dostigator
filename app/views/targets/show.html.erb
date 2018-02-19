@@ -7,7 +7,6 @@
 
       <div class="col-md-8">
         <h1><%= @target.title %></h1>
-        <%= @target.description %>
         <h3><%= l @target.date, format: :long %></h3>
 
         <% @target.steps.each do |step| %>
