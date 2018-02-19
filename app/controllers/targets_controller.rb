@@ -20,13 +20,19 @@ class TargetsController < ApplicationController
     @comment = Comment.new
 
     @user = @target.user
+
+    #@steps = @target.steps
+    @new_step = @target.steps.build(params[:step])
   end
 
   def new
     @target = current_user.targets.build
+    @step = @target.steps.build
   end
 
-  def edit; end
+  def edit
+    @steps = @target.steps
+  end
 
   def create
     @target = current_user.targets.build(target_params)

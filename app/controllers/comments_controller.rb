@@ -1,10 +1,12 @@
 class CommentsController < ApplicationController
   # встроенный в девайз фильтр - посылает незалогиненного пользователя
-  before_action :authenticate_user!, except: [:create, :destroy]
+  before_action :authenticate_user!, except: [:edit, :create, :destroy]
 
-  before_action :set_commentable, only: [:create, :destroy]
+  before_action :set_commentable, only: [:edit, :update, :create, :destroy]
 
-  before_action :set_comment, only: [:destroy]
+  before_action :set_comment, only: [:edit, :update, :destroy]
+
+  def edit; end
 
   def create
     @comment = @commentable.comments.build(comment_params)
@@ -14,6 +16,14 @@ class CommentsController < ApplicationController
       redirect_to @commentable, notice: I18n.t('controllers.comments.created')
     else
       redirect_to @commentable, alert: I18n.t('controllers.comments.error')
+    end
+  end
+
+  def update
+    if @comment.update(comment_params)
+      redirect_to @commentable, notice: 'Вопрос сохранен.'
+    else
+      render :edit
     end
   end
 
@@ -42,6 +52,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :user_id)
+    params.require(:comment).permit(:body, :answer, :user_id)
   end
 end

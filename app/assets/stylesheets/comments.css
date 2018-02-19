@@ -1,0 +1,20 @@
+.comment-form-border {
+    background-color: whitesmoke;
+    padding: 12px; /* Поля вокруг текста */
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.comment-border {
+    background-color: #fff1c5;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.comment-border-answer {
+    background-color: #ffc075;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 5px;
+}

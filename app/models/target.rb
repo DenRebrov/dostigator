@@ -3,6 +3,8 @@ class Target < ApplicationRecord
 
   has_many :comments, as: :commentable, dependent: :destroy
 
+  has_many :steps, dependent: :destroy
+
   validates :user, presence: true
 
   validates :title, presence: true, length: {maximum: 75}

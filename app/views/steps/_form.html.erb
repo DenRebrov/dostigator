@@ -1,0 +1,21 @@
+<%= form_for [@target, step] do |f| %>
+  <%= render partial: 'partials/form_errors', locals: {model: step} %>
+
+  <%# тело  %>
+  <div class="form-group">
+    <%= f.label "Шаг" %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.radio_button :status, 0 %>
+    <%= label :status_incomplete, 'Не выполнен...' %>
+    <%= f.radio_button :status, 1 %>
+    <%= label :status_incomplete, 'Выполнен!' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
+    <%= link_to 'Назад', edit_target_path(@target), class: 'btn btn-default' %>
+  </div>
+<% end %>

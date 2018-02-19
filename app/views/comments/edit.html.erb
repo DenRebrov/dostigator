@@ -1,0 +1,18 @@
+<%= form_for [@commentable, @comment] do |f| %>
+  <%= render partial: 'partials/form_errors', locals: { model: @comment } %>
+
+  <%# тело комментария %>
+  <%= @comment.body %>
+
+  <%# тело комментария %>
+  <div class="form-group">
+    <%= f.label :answer %>
+    <%= f.text_area :answer, class: 'form-control' %>
+  </div>
+
+  <%# кнопка "отправить" %>
+  <div class="actions">
+    <%= f.submit 'Отправить', class: 'btn btn-primary' %>
+    <%= link_to 'Назад', @user, class: 'btn btn-default' %>
+  </div>
+<% end %>

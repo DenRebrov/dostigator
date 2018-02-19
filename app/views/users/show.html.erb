@@ -5,7 +5,7 @@
   </div>
 
   <div class="col-md-8">
-    <div class="text-title buffer-bottom">
+    <div class="text-title">
       <%= @user.name %>
     </div>
     <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default buffer-bottom' if @user == current_user %>
@@ -36,13 +36,21 @@
 
     <ul class="nav nav-tabs buffer-top-max text-bold text-M">
       <%= content_tag :li, class: (params[:user_tab] == nil ? "active" : "") do %>
-        <%= link_to "Цели и достижения", user_path(@user) %>
+        <%= content_tag :a, href: user_path(@user) do %>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          Цели и достижения
+        <% end %>
       <% end %>
       <%#= content_tag :li, class: (params[:user_tab] == 'finance' ? "active" : "") do %>
-      <%#= link_to "Мои финансы", user_path(user_tab: 'finance') %>
+        <%#= content_tag :a, href: user_path(user_tab: 'finance') do %>
+
+        <%# end %>
       <%# end %>
       <%= content_tag :li, class: (params[:user_tab] == 'comments' ? "active" : "") do %>
-        <%= link_to "Комментарии", user_path(user_tab: 'comments') %>
+        <%= content_tag :a, href: user_path(user_tab: 'comments') do %>
+          <span class="glyphicon glyphicon-comment"></span>
+          Комментарии
+        <% end %>
       <% end %>
     </ul>
   </div>
@@ -54,7 +62,7 @@
       <div class="thumbnail text-center text-L buffer-top"><p>Я хочу</p></div>
         <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
       <% @targets.order(:created_at).reverse_order.each do |target| %>
-        <%= render partial: 'targets/target', order: :created_at, object: target if target.status == 0 %>
+        <%= render partial: 'targets/target', object: target if target.status == 0 %>
       <% end %>
     </div>
 

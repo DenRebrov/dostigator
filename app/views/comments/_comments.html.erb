@@ -1,32 +1,43 @@
 <% commentable.comments.order(:created_at).reverse_order.each do |comment| %>
   <div class="col-md-6">
     <div class="comment-border">
+
       <div class="text-S text-bold buffer-bottom">
         <%= comment.body %>
       </div>
 
       <div class="text-muted buffer-bottom-mini">
-        <span><%= render partial: 'users/user', object: comment.user if comment.user %></span>
-        <div class="text-muted buffer-top-mini">
-          <%= l comment.created_at, format: :long, class: "" %>
-        </div>
+        <span><%= render partial: 'users/user', object: comment.user if comment.user %>
+          <%= l comment.created_at, format: :long, class: "" %></span>
       </div>
+
+      <% if comment.answer %>
+        <div class="comment-border-answer buffer-bottom-mini">
+          <div class="text-S text-bold buffer-bottom">
+            <%= comment.answer %>
+          </div>
+
+          <div class="text-muted buffer-bottom-mini">
+            <%#= image_tag(user_avatar(comment.user), class: 'img-icon') if comment %>
+            <%#= link_to @user.name, user_path(@user) %>
+            <%#= l comment.created_at, format: :long, class: "" %>
+          </div>
+        </div>
+      <% end %>
 
         <%# удалять комментарии может автор этого комментария и пользователь на странице которого они оставлены %>
       <% if current_user_can_edit?(comment) || @user == current_user %>
-        <%= link_to "Ответ",
-                    (request.path == user_path(@user) ? user_comment_path(comment.commentable, comment) :
-                         target_comment_path(comment.commentable, comment)),
-                    method: :delete,
-                    data: {confirm: t('.destroy_confirm')},
-                    class: "label label-info" %>
+        <%= link_to "",
+                    (request.path == user_path(@user) ? edit_user_comment_path(comment.commentable, comment) :
+                         edit_target_comment_path(comment.commentable, comment)),
+                    class: "btn btn-info btn-sm glyphicon glyphicon-retweet" %>
 
-        <%= link_to "Удалить",
+        <%= link_to "",
                     (request.path == user_path(@user) ? user_comment_path(comment.commentable, comment) :
                          target_comment_path(comment.commentable, comment)),
                     method: :delete,
                     data: {confirm: t('.destroy_confirm')},
-                    class: "label label-danger" %>
+                    class: "btn btn-danger btn-sm glyphicon glyphicon-remove" %>
       <% end %>
     </div>
   </div>

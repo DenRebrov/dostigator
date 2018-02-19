@@ -1,4 +1,4 @@
-<%# Паршиал дляотображения формы создания нового  %>
+<%# Паршал дляотображения формы создания новой цели %>
 <%= form_for(@target) do |f| %>
   <%= render partial: 'partials/form_errors', locals: {model: @target} %>
 
@@ -17,15 +17,16 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :description %>
-    <%= f.text_area :description, class: 'form-control' %>
+    <div class="text-bold"><p>Шаг</p></div>
+    <%#= render partial: 'steps/step', collection: @target.steps %>
+    <%#= link_to "Добавить шаг", new_target_step_path(@target, @step), class: 'btn btn-border-success buffer-top' %>
   </div>
 
   <div class="form-group">
     <%= f.radio_button :status, 0 %>
-    <%= label :status_incomplete, 'Цель в прогрессе...', class: '' %><br />
+    <%= label :status_incomplete, 'Цель в прогрессе...' %><br />
     <%= f.radio_button :status, 1 %>
-    <%= label :status_complete, 'Цель достигнута!', class: '' %>
+    <%= label :status_complete, 'Цель достигнута!' %>
   </div>
 
   <div class="actions">

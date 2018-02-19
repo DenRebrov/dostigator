@@ -35,16 +35,7 @@
     color: white;
 }
 
-.comment-form-border {
-    background-color: whitesmoke;
-    padding: 12px; /* Поля вокруг текста */
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.comment-border {
-    background-color: #fff1c5;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 5px;
+.step-border {
+    padding: 15px 0;
+    border-bottom: 1px solid lightgray;
 }

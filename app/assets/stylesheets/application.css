@@ -20,7 +20,7 @@
 }
 
 .buffer-top-max {
-    margin-top: 50px;
+    margin-top: 60px;
 }
 
 .buffer-top-mini {
@@ -40,6 +40,10 @@
     margin-bottom: 20px;
 }
 
+.buffer-left {
+    margin-left: 6px;
+}
+
 .img-icon, .img-icon-small {
     height: 50px;
     width: auto;
@@ -49,4 +53,25 @@
 .img-medium {
     height: 300px;
     width: auto;
+}
+
+.btn-border-success {
+    background-color: white;
+    color: green;
+    border: 2px solid #4CAF50;
+    text-decoration: none;
+}
+
+.btn-border-danger {
+    background-color: white;
+    color: #ff4d2b;
+    border: 1px solid #ff4d2b;
+    text-decoration: none;
+}
+
+.btn-border-primary {
+    background-color: white;
+    color: lightskyblue;
+    border: 1px solid lightskyblue;
+    text-decoration: none;
 }
