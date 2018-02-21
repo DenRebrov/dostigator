@@ -46,6 +46,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cocoon (1.2.11)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
     crass (1.0.3)
@@ -185,6 +186,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   carrierwave
+  cocoon
   devise
   devise-i18n
   fog-aws

@@ -21,7 +21,6 @@ class TargetsController < ApplicationController
 
     @user = @target.user
 
-    #@steps = @target.steps
     @new_step = @target.steps.build(params[:step])
   end
 
@@ -30,24 +29,29 @@ class TargetsController < ApplicationController
     @step = @target.steps.build
   end
 
-  def edit
-    @steps = @target.steps
-  end
-
   def create
     @target = current_user.targets.build(target_params)
 
     if @target.save
       redirect_to current_user, notice: I18n.t('controllers.targets.created')
     else
+      build_steps
+
       render :new
     end
+  end
+
+  def edit
+    build_steps
+    @steps = @target.steps
   end
 
   def update
     if @target.update(target_params)
       redirect_to @target, notice: I18n.t('controllers.targets.updated')
     else
+      build_steps
+
       render :edit
     end
   end
@@ -59,6 +63,10 @@ class TargetsController < ApplicationController
 
   private
 
+  def build_steps
+    @target.steps.build if @target.steps.empty?
+  end
+
   def set_target
     @target = Target.find(params[:id])
   end
@@ -68,6 +76,6 @@ class TargetsController < ApplicationController
   end
 
   def target_params
-    params.require(:target).permit(:title, :description, :date, :status)
+    params.require(:target).permit(:title, :description, :date, :status, steps_attributes: [:id, :name, :status])
   end
 end

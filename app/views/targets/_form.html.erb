@@ -17,16 +17,24 @@
   </div>
 
   <div class="form-group">
-    <div class="text-bold"><p>Шаг</p></div>
-    <%#= render partial: 'steps/step', collection: @target.steps %>
-    <%#= link_to "Добавить шаг", new_target_step_path(@target, @step), class: 'btn btn-border-success buffer-top' %>
-  </div>
-
-  <div class="form-group">
     <%= f.radio_button :status, 0 %>
     <%= label :status_incomplete, 'Цель в прогрессе...' %><br />
     <%= f.radio_button :status, 1 %>
     <%= label :status_complete, 'Цель достигнута!' %>
+  </div>
+
+  <h3>Шаги</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="form-group">
+        <%= f.fields_for :steps do |step| %>
+          <%= render 'step_fields', f: step %>
+          <div class="links">
+            <h4><%= link_to_add_association 'Добавить шаг', f, :steps, class: "label label-success" %></h4>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <div class="actions">

@@ -1,5 +1,5 @@
 <% commentable.comments.order(:created_at).reverse_order.each do |comment| %>
-  <div class="col-md-6">
+  <div class="col-md-12">
     <div class="comment-border">
 
       <div class="text-S text-bold buffer-bottom">
@@ -11,19 +11,19 @@
           <%= l comment.created_at, format: :long, class: "" %></span>
       </div>
 
-      <% if !comment.answer.nil? %>
+      <% if comment.answers.any? %>
+        <% comment.answers.each do |answer| %>
         <div class="comment-border-answer buffer-bottom-mini">
           <div class="text-S text-bold buffer-bottom">
-            <%= comment.answer %>
-          </div>
-
-          <div class="text-muted buffer-bottom-mini">
-            <%#= image_tag(user_avatar(comment.user), class: 'img-icon') if comment %>
-            <%#= link_to @user.name, user_path(@user) %>
-            <%#= l comment.created_at, format: :long, class: "" %>
+            <%= answer.body %>
           </div>
         </div>
+        <% end %>
       <% end %>
+
+      <div class="text-muted buffer-bottom-mini">
+        <%= render partial: "answers/form", locals: {answer: comment.answers.build} %>
+      </div>
 
         <%# удалять комментарии может автор этого комментария и пользователь на странице которого они оставлены %>
       <% if current_user_can_edit?(comment) || @user == current_user %>

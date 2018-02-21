@@ -34,8 +34,3 @@
 .target-border a:hover {
     color: white;
 }
-
-.step-border {
-    padding: 15px 0;
-    border-bottom: 1px solid lightgray;
-}

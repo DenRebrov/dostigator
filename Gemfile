@@ -38,6 +38,9 @@ gem 'rmagick'
 # гем для работы carrierwave с хранилищем Amazon S3
 gem 'fog-aws'
 
+# гем для работы с вложенными формами
+gem "cocoon"
+
 group :production do
   # в продакшен сервере heroku этот гем соединяет с базой данных Postgres
   gem 'pg'

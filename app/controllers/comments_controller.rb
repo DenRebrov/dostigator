@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @commentable, notice: I18n.t('controllers.comments.created')
+      redirect_to polymorphic_path(@commentable, user_tab: "comments"), notice: I18n.t('controllers.comments.created')
     else
       redirect_to @commentable, alert: I18n.t('controllers.comments.error')
     end

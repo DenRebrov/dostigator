@@ -77,11 +77,11 @@
 
   <% elsif params[:user_tab] == 'comments' %>
     <div class="container">
-      <div class="col-md-4 comment-form-border">
+      <div class="col-md-5 comment-form-border">
         <%= render partial: 'comments/form', locals: { commentable: @user } %>
       </div>
 
-      <div class="col-md-8">
+      <div class="col-md-7">
         <%= render partial: 'comments/comments', locals: { commentable: @user } %>
       </div>
     </div>

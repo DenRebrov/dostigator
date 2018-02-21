@@ -13,6 +13,7 @@
 //= require jquery
 //= require rails-ujs
 //= require twitter/bootstrap
+//= require cocoon
 //= require_tree .
 
 /* Set the width of the side navigation to 250px */

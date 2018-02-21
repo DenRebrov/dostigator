@@ -10,7 +10,8 @@
         <h3><%= l @target.date, format: :long %></h3>
 
         <% @target.steps.each do |step| %>
-          <%= step.name %><br />
+          <%= step.name %>
+          <%= step.status %><br />
         <% end %>
 
         <%= content_tag :span, class: (@target.status == 1 ? "label label-success" : "label label-primary") do %>
@@ -30,11 +31,11 @@
 </div>
 
 <div class="container">
-  <div class="col-md-4 comment-form-border">
+  <div class="col-md-5 comment-form-border">
     <%= render partial: 'comments/form', locals: { commentable: @target } %>
   </div>
 
-  <div class="col-md-8">
+  <div class="col-md-7">
     <%= render partial: 'comments/comments', locals: { commentable: @target } %>
   </div>
 </div>
