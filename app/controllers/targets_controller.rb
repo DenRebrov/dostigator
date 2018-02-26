@@ -20,8 +20,6 @@ class TargetsController < ApplicationController
     @comment = Comment.new
 
     @user = @target.user
-
-    @new_step = @target.steps.build(params[:step])
   end
 
   def new

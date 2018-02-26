@@ -12,10 +12,16 @@
             <%= f.text_field :name, class: 'form-control' %>
           </div>
 
-
-
           <div class="form-group field">
-            <%= f.select(:status, options_for_select([['Не выполнен', 0], ['Выполнен', 1]]), class: "form-control") %>
+            <%#= f.label :status %>
+            <%#= f.select(:status, options_for_select([['Не выполнен', 0], ['Выполнен', 1]]), class: 'form-control') %>
+          </div>
+
+          <div class="form-group">
+            <%= f.radio_button :status, 0 %>
+            <%= label :status_incomplete, 'Шаг не выполнен...' %><br />
+            <%= f.radio_button :status, 1 %>
+            <%= label :status_complete, 'Шаг выполнен!' %>
           </div>
 
           <h4><%= link_to_remove_association "Удалить шаг", f, class: "label label-danger" %></h4>

@@ -6,7 +6,6 @@
 .target-border-success {
     background-color: #adffd6;
     padding: 15px; /* Поля вокруг текста */
-    margin-top: 10px;
     border-radius: 5px;
 }
 
@@ -22,7 +21,6 @@
 .target-border {
     background-color: #dbeaff;
     padding: 15px; /* Поля вокруг текста */
-    margin-top: 10px;
     border-radius: 5px;
 }
 

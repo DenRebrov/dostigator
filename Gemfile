@@ -39,7 +39,9 @@ gem 'rmagick'
 gem 'fog-aws'
 
 # гем для работы с вложенными формами
-gem "cocoon"
+gem 'cocoon'
+
+gem 'turbolinks'
 
 group :production do
   # в продакшен сервере heroku этот гем соединяет с базой данных Postgres

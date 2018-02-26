@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :targets do
     resources :comments, only: [:edit, :create, :update, :destroy]
-    resources :steps, only: [:new, :edit, :create, :update, :destroy]
+    resources :steps, only: [:create, :destroy]
   end
 
   resources :users, only: [:show, :edit, :update] do

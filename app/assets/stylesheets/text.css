@@ -3,6 +3,11 @@
     font-size: 54px;
 }
 
+.text-subtitle {
+    font-weight: bold;
+    font-size: 40px;
+}
+
 .text-bold {
     font-weight: bold;
 }

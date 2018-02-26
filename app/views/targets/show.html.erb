@@ -1,30 +1,43 @@
 <div class="col-md-12 container">
-  <%= content_tag :div, class: (@target.status == 1 ? "target-border-success" : "target-border") do %>
-    <div class="row">
-      <div class="col-md-4">
-        <%= image_tag user_avatar(@user), class: 'img-medium thumbnail' %>
+  <%= content_tag :div, class: (@target.status == 1 ? "panel panel-success" : "panel panel-primary") do %>
+    <div class="panel-heading">
+      <div class="text-white text-subtitle">
+        <%= link_to image_tag(user_avatar(@user), class: 'img-icon'), user_path(@user) %>
+        <%= @target.title %>
       </div>
+    </div>
 
-      <div class="col-md-8">
-        <h1><%= @target.title %></h1>
-        <h3><%= l @target.date, format: :long %></h3>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-9">
+          <% @target.steps.each do |step| %>
+            <div class="text-L buffer-bottom-mini">
+              <%= content_tag :div, class: (step.status == 1 ? "label label-success" : "label label-info") do %>
+                <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
+                <%= step.name %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
 
-        <% @target.steps.each do |step| %>
-          <%= step.name %>
-          <%= step.status %><br />
-        <% end %>
+        <div class="col-md-3">
+          <div class="text-L buffer-bottom-mini pull-right">
+            <div class="label label-default">
+              <%= l @target.date, format: :long %>
+            </div>
+          </div>
 
-        <%= content_tag :span, class: (@target.status == 1 ? "label label-success" : "label label-primary") do %>
-          <% if @target.status == 1 %> Успех <% else %> В прогрессе <% end %>
-        <% end %>
-        <hr>
-        <% if current_user_can_edit?(@target) %>
-          <%= link_to "Изменить", edit_target_path, class: 'btn btn-primary' %>
-          <%= link_to "Удалить", target_path(@target),
-                      :method => :delete,
-                      data: {confirm: 'Точно удалить эту цель?'},
-                      class: 'btn btn-danger' %>
-        <% end %>
+          <% if current_user_can_edit?(@target) %>
+            <div class="buffer-top pull-right">
+              <%= link_to "Изменить", edit_target_path, class: 'btn btn-primary' %>
+              <%= link_to "Удалить", target_path(@target),
+                          :method => :delete,
+                          data: {confirm: 'Точно удалить эту цель?'},
+                          class: 'btn btn-danger' %>
+            </div>
+          <% end %>
+        </div>
+
       </div>
     </div>
   <% end %>

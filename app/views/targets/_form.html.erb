@@ -26,18 +26,18 @@
   <h3>Шаги</h3>
   <div class="panel panel-default">
     <div class="panel-body">
-      <div class="form-group">
+      <div class="form-group steps">
         <%= f.fields_for :steps do |step| %>
           <%= render 'step_fields', f: step %>
-          <div class="links">
-            <h4><%= link_to_add_association 'Добавить шаг', f, :steps, class: "label label-success" %></h4>
-          </div>
         <% end %>
+        <div class="links">
+          <h4><%= link_to_add_association 'Добавить шаг', f, :steps, class: "label label-success" %></h4>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="actions">
+  <div class="form-actions">
     <%= f.submit 'Сохранить', class: 'btn btn-primary' %>
     <%= link_to 'Назад', :back, class: 'btn btn-default' %>
   </div>
