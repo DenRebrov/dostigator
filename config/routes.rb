@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   end
 
   resources :answers, only: [:create, :destroy]
+
+  mount ActionCable.server => '/cable'
 end

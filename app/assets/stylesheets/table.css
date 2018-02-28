@@ -4,7 +4,13 @@ table {
 }
 
 th, td {
-    padding: 5px;
-    text-align: left;
+    padding: 10px;
     border-bottom: 1px solid #ddd;
+}
+
+hr {
+    border: none; /* Убираем границу для браузера Firefox */
+    color: white; /* Цвет линии для остальных браузеров */
+    background-color: white; /* Цвет линии для браузера Firefox и Opera */
+    height: 2px; /* Толщина линии */
 }

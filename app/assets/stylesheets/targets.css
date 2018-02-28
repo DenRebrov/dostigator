@@ -4,14 +4,14 @@
 */
 
 .target-border-success {
-    background-color: #adffd6;
+    background-color: #b4ffc0;
     padding: 15px; /* Поля вокруг текста */
     border-radius: 5px;
 }
 
 .target-border-success a {
     text-decoration: none;
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 .target-border-success a:hover {
@@ -19,16 +19,28 @@
 }
 
 .target-border {
-    background-color: #dbeaff;
+    background-color: #c5dbff;
     padding: 15px; /* Поля вокруг текста */
     border-radius: 5px;
 }
 
 .target-border a {
     text-decoration: none;
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 .target-border a:hover {
     color: white;
+}
+
+.target-border-title-success {
+    background-color: #94f39d;
+    padding: 15px; /* Поля вокруг текста */
+    border-radius: 5px;
+}
+
+.target-border-title {
+    background-color: #9abbff;
+    padding: 15px; /* Поля вокруг текста */
+    border-radius: 5px;
 }

@@ -85,6 +85,18 @@
         <%= render partial: 'comments/comments', locals: { commentable: @user } %>
       </div>
     </div>
+
+    <div id="messages">
+      <%= render @messages %>
+    </div>
+
+    <form>
+      <label>Say</label><br />
+      <input type="text" data-behavior="user_speaker">
+    </form>
+
+    <%#= render 'messages/form' %>
+
   <% end %>
 </div>
 

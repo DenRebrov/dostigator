@@ -41,7 +41,11 @@ gem 'fog-aws'
 # гем для работы с вложенными формами
 gem 'cocoon'
 
+# быстая загрузка ссылок
 gem 'turbolinks'
+
+#
+gem 'coffee-rails'
 
 group :production do
   # в продакшен сервере heroku этот гем соединяет с базой данных Postgres

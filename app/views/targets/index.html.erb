@@ -2,7 +2,7 @@
   <p>Цели наших пользователей</p>
 </div>
 
-<table class="text-S buffer-top">
+<table class="text-S ">
   <thead>
   <tr class="text-L">
     <th>Достигатор</th>
@@ -17,11 +17,11 @@
     <td><%= link_to image_tag(user_avatar(target.user), class: 'img-icon'), user_path(target.user) %>
       <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
 
-    <td><%= link_to target.title, target_path(target), class: (target.status == 1 ? "btn text-S target-border-success text-dark-green" :
-                                                                   "btn text-S target-border text-black") %></td>
+    <td><%= link_to target.title, target_path(target), class: (target.status == 1 ? "btn text-S target-border-title-success text-white text-bold" :
+                                                                   "btn text-S target-border-title text-white text-bold") %></td>
     <td>
         <div class="label label-default text-S">
-          <%= l target.date, format: :long %>
+          <%= l target.date, format: "%e %B %Y"  %>
         </div>
     </td>
 

@@ -2,7 +2,7 @@
 <div class="col-md-12 buffer-bottom-mini">
   <%= content_tag :div, class: (target.status == 1 ? "target-border-success" : "target-border") do %>
     <h3><%= link_to target.title, target_path(target), class: (target.status == 1 ? "text-dark-green" : "text-black") %></h3>
-    <h3><small><%= l target.date, format: :long %></small></h3>
+    <h3><small><%= l target.date, format: "%e %B %Y" %></small></h3>
     <%= content_tag :span, class: (target.status == 1 ? "label label-success" : "label label-primary") do %>
       <% if target.status == 1 %> Успех <% else %> В прогрессе <% end %>
     <% end %>
