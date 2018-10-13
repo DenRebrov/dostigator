@@ -11,3 +11,5 @@ class User < ApplicationRecord
   # Добавляем аплоадер аватарок, чтобы заработал carrierwave
   mount_uploader :ava, AvaUploader
 end
+
+
