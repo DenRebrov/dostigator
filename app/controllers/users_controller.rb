@@ -6,7 +6,6 @@ class UsersController < ApplicationController
   before_action :set_current_user, except: [:show]
 
   def show
-    @messages = Message.all
 
     @user = User.find(params[:id])
 

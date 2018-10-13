@@ -7,8 +7,6 @@ class ApplicationController < ActionController::Base
   # хелпер метод, доступный во вьюхах
   helper_method :current_user_can_edit?
 
-  helper_method :current_user_for_message
-
   # Вспомогательный метод, возвращает true, если текущий залогиненный юзер
   # может править указанную модель. Обновили метод — теперь на вход принимаем
   # target, или «дочерние» объекты
@@ -27,14 +25,5 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :birthday, :ava])
   end
 
-  private
 
-  def current_user_for_message
-    @current_user_for_message ||= User.where(id: cookies.signed[:user_id].first)
-
-    if @current_user_for_message.nil?
-      @current_user_for_message = User.create
-      cookies.signed[:user_id] = @current_user_for_message.id
-    end
-  end
 end
