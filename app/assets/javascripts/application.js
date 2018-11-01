@@ -26,3 +26,16 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+var toggleNewAnswerForm = function(comment_id) {
+    $('#new_answer_form_' + comment_id).slideToggle();
+    $('#new_answer_link_' + comment_id).toggle();
+};
+
+var toggleNewComment = function() {
+    $('#new_comment_form').slideToggle();
+};
+
+var toggleCommentsTree = function() {
+    $('#comments_tree').slideToggle();
+};

@@ -15,6 +15,11 @@
  */
 
 /* Buffers */
+
+body {
+    font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
+}
+
 .buffer-top {
     margin-top: 20px;
 }
@@ -44,8 +49,18 @@
     margin-left: 6px;
 }
 
-.img-icon, .img-icon-small {
+.buffer-right {
+    margin-right: 16px;
+}
+
+.img-icon {
     height: 60px;
+    width: auto;
+    border-radius: 50%;
+}
+
+.img-icon-sm {
+    height: 40px;
     width: auto;
     border-radius: 50%;
 }
@@ -53,4 +68,22 @@
 .img-medium {
     height: 300px;
     width: auto;
+}
+
+#mobile_tabs {
+    display: none;
+}
+
+@media all and (max-width: 767px) {
+    .img-medium {
+        height: 200px;
+    }
+
+    #desktop_tabs {
+        display: none;
+    }
+
+    #mobile_tabs {
+        display: block;
+    }
 }

@@ -1,44 +1,63 @@
-<% commentable.comments.order(:created_at).reverse_order.each do |comment| %>
+<% commentable.comments.order('created_at DESC').walk_tree do |comment, level| %>
+  <%# next if comment.new_record? %>
   <div class="col-md-12">
-    <div class="comment-border">
+    <div class="comment-border" style="margin-left: <%= resize_tree(level) %>px">
+      <div class="text-muted buffer-bottom-mini">
+        <span>
+          <% if comment.user %>
+            <%= link_to image_tag(user_avatar(comment.user), class: 'img-icon-sm'), user_path(comment.user) %>
+            <%= comment.user.name %>
+          <% else %>
+            <%= glyphicon("remove") %>
+            Пользователь удален
+            <%= glyphicon("remove") %>
+          <% end %>
+          <div class="right">
+            <%= l comment.created_at, format: :long %>
+            <%# удалять комментарии может автор этого комментария и пользователь на странице которого они оставлены %>
+            <% if current_user_can_edit?(comment) || @user == current_user %>
+              <%= link_to "", user_comment_path(comment.commentable, comment),
+                          method: :delete,
+                          data: {confirm: t('.destroy_confirm')},
+                          class: "btn btn-danger btn-sm buffer-left glyphicon glyphicon-remove" %>
+            <% end %>
+          </div>
+        </span>
+      </div>
 
       <div class="text-S text-bold buffer-bottom">
         <%= comment.body %>
       </div>
 
-      <div class="text-muted buffer-bottom-mini">
-        <span><%= render partial: 'users/user', object: comment.user if comment.user %>
-          <%= l comment.created_at, format: :long, class: "" %></span>
+      <div class="text-S text-bold" id="new_answer_link_<%= comment.id %>">
+          <%= link_to "Ответить", "#",
+                      onclick: "toggleNewAnswerForm('#{comment.id}'); return false",
+                      id: "new_comment_link" %>
       </div>
 
-      <% if comment.answers.any? %>
-        <% comment.answers.each do |answer| %>
-        <div class="comment-border-answer buffer-bottom-mini">
-          <div class="text-S text-bold buffer-bottom">
-            <%= answer.body %>
+      <%# форма ответа на комментарий (она скрытая) %>
+      <div class="" id="new_answer_form_<%= comment.id %>">
+        <%= form_for [commentable, comment.children.build] do |f| %>
+          <%= hidden_field_tag 'comment[user_id]', commentable.id %>
+          <%= hidden_field_tag 'comment[parent_id]', comment.id %>
+
+          <div class="form-group">
+            <%= f.label :body %>
+            <%= f.text_area :body, class: 'form-control' %>
           </div>
-        </div>
+
+          <div class="actions">
+            <%= f.submit 'Создать', class: 'btn btn-primary' %>
+            <%= link_to 'отмена', '#', onclick: "toggleNewAnswerForm('#{comment.id}'); return false",
+                        class: "btn btn-default" %>
+          </div>
         <% end %>
-      <% end %>
-
-      <div class="text-muted buffer-bottom-mini">
-        <%= render partial: "answers/form", locals: {answer: comment.answers.build} %>
       </div>
-
-        <%# удалять комментарии может автор этого комментария и пользователь на странице которого они оставлены %>
-      <% if current_user_can_edit?(comment) || @user == current_user %>
-        <%= link_to "",
-                    (request.path == user_path(@user) ? edit_user_comment_path(comment.commentable, comment) :
-                         edit_target_comment_path(comment.commentable, comment)),
-                    class: "btn btn-info btn-sm glyphicon glyphicon-retweet" %>
-
-        <%= link_to "",
-                    (request.path == user_path(@user) ? user_comment_path(comment.commentable, comment) :
-                         target_comment_path(comment.commentable, comment)),
-                    method: :delete,
-                    data: {confirm: t('.destroy_confirm')},
-                    class: "btn btn-danger btn-sm glyphicon glyphicon-remove" %>
-      <% end %>
     </div>
   </div>
+
+  <%# ява-скрипт, который скрывает форму ответа на комментарий %>
+  <script type="text/javascript">
+      $('#new_answer_form_<%= comment.id %>').hide();
+  </script>
 <% end %>

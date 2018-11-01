@@ -13,7 +13,8 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to polymorphic_path(@commentable, user_tab: "comments"), notice: I18n.t('controllers.comments.created')
+      #redirect_to polymorphic_path(@commentable, user_tab: "comments"), notice: I18n.t('controllers.comments.created')
+      redirect_to @commentable, notice: I18n.t('controllers.comments.created')
     else
       redirect_to @commentable, alert: I18n.t('controllers.comments.error')
     end
@@ -49,9 +50,10 @@ class CommentsController < ApplicationController
 
   def set_comment
     @comment = @commentable.comments.find(params[:id])
+    #@comment = Comment.find(params[:id])
   end
 
   def comment_params
-    params.require(:comment).permit(:body, :answer, :user_id)
+    params.require(:comment).permit(:body, :parent_id, :user_id)
   end
 end

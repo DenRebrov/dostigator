@@ -1,20 +1,22 @@
 .comment-form-border {
-    background-color: whitesmoke;
+    background-color: ghostwhite;
     padding: 12px; /* Поля вокруг текста */
     margin-top: 10px;
     border-radius: 5px;
 }
 
 .comment-border {
-    background-color: #fff1c5;
+    background-color: whitesmoke;
     margin-top: 10px;
-    padding: 12px;
-    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    border-radius: 10px;
+    border-left:10px solid #b2b2b2;
+    word-break: break-all;
 }
 
-.comment-border-answer {
-    background-color: #ffc075;
-    margin-top: 10px;
-    padding: 12px;
-    border-radius: 5px;
+/*#comments_tree,*/
+#new_comment_form
+{
+    display: none
 }

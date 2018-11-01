@@ -14,3 +14,10 @@ hr {
     background-color: white; /* Цвет линии для браузера Firefox и Opera */
     height: 2px; /* Толщина линии */
 }
+
+.table-target-border {
+    border-color: grey;
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 50%;
+}

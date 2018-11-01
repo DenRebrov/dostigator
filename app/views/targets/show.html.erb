@@ -1,4 +1,4 @@
-<div class="col-md-12 container">
+<div class="container text-word-breaker">
   <%= content_tag :div, class: (@target.status == 1 ? "target-border-title-success" : "target-border-title") do %>
     <div class="panel-heading">
       <div class="text-white text-subtitle">
@@ -9,7 +9,7 @@
 
     <%= content_tag :div, class: (@target.status == 1 ? "row target-border-success" : "row target-border") do %>
       <div class="col-md-9">
-        <% @target.steps.each do |step| %>
+        <% @target.steps.order('created_at ASC').each do |step| %>
           <div class="text-L buffer-bottom-mini">
             <%= content_tag :div, class: (step.status == 1 ? "label label-success" : "label label-info") do %>
               <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
@@ -40,12 +40,4 @@
   <% end %>
 </div>
 
-<div class="container">
-  <div class="col-md-5 comment-form-border">
-    <%= render partial: 'comments/form', locals: { commentable: @target } %>
-  </div>
-
-  <div class="col-md-7">
-    <%= render partial: 'comments/comments', locals: { commentable: @target } %>
-  </div>
-</div>
+<%= render partial: 'comments/comments_links', locals: { commentable: @commentable, comments: @comments } %>

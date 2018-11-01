@@ -38,20 +38,29 @@
       <%= content_tag :li, class: (params[:user_tab] == nil ? "active" : "") do %>
         <%= content_tag :a, href: user_path(@user) do %>
           <span class="glyphicon glyphicon-star-empty"></span>
-          Цели и достижения
+          Мои цели
         <% end %>
       <% end %>
+
+      <%= content_tag :li, class: (params[:user_tab] == 'target_30' ? "active" : "") do %>
+        <%= content_tag :a, href: user_path(user_tab: '?????') do %>
+          <span class="glyphicon glyphicon-star-empty"></span>
+          ????
+        <% end %>
+      <% end %>
+
       <%#= content_tag :li, class: (params[:user_tab] == 'finance' ? "active" : "") do %>
         <%#= content_tag :a, href: user_path(user_tab: 'finance') do %>
 
         <%# end %>
       <%# end %>
-      <%= content_tag :li, class: (params[:user_tab] == 'comments' ? "active" : "") do %>
-        <%= content_tag :a, href: user_path(user_tab: 'comments') do %>
-          <span class="glyphicon glyphicon-comment"></span>
-          Комментарии
-        <% end %>
-      <% end %>
+
+      <!--<%#= content_tag :li, class: (params[:user_tab] == 'comments' ? "active" : "") do %>-->
+        <!--<%#= content_tag :a, href: user_path(user_tab: 'comments') do %>-->
+          <!--<span class="glyphicon glyphicon-comment"></span>-->
+          <!--Комментарии-->
+        <!--<%# end %>-->
+      <!--<%# end %>-->
     </ul>
   </div>
 </div>
@@ -61,44 +70,23 @@
     <div class="col-md-6">
       <div class="thumbnail text-center text-L buffer-top"><p>Я хочу</p></div>
         <%# Рендерим сразу массив целей, каждый в паршиале 'targets/target' %>
-      <% @targets.order(:created_at).reverse_order.each do |target| %>
+      <% @targets.order(:date).each do |target| %>
         <%= render partial: 'targets/target', object: target if target.status == 0 %>
       <% end %>
     </div>
 
     <div class="col-md-6">
       <div class="thumbnail text-center text-L buffer-top"><p>Я достиг</p></div>
-      <% @targets.order(:created_at).reverse_order.each do |target| %>
+      <% @targets.order(:date).each do |target| %>
         <%= render partial: 'targets/target', object: target if target.status == 1 %>
       <% end %>
     </div>
 
-  <%# elsif params[:user_tab] == 'finance' %>
+  <% elsif params[:user_tab] == '????' %>
 
-  <% elsif params[:user_tab] == 'comments' %>
-    <div class="container">
-      <div class="col-md-5 comment-form-border">
-        <%= render partial: 'comments/form', locals: { commentable: @user } %>
-      </div>
 
-      <div class="col-md-7">
-        <%= render partial: 'comments/comments', locals: { commentable: @user } %>
-      </div>
-    </div>
-
-    <!--<div class="messages">-->
-      <!--<div class="messages-inner">-->
-        <!--<%#= render @user.messages %>-->
-      <!--</div>-->
-    <!--</div>-->
-
-    <!--<form>-->
-      <!--<label>Say</label><br />-->
-      <!--<input type="text" data-behavior="user_speaker">-->
-    <!--</form>-->
-
-    <%#= render 'messages/form' %>
-
+  <%# elsif params[:user_tab] == 'comments' %>
   <% end %>
 </div>
 
+<%#= render partial: 'comments/comments_links', locals: { commentable: @user, comments: @comments } %>

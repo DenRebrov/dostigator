@@ -1,8 +1,28 @@
-<div class="text-center text-primary text-title">
-  <p>Цели наших пользователей</p>
+<div class="text-center text-primary text-subtitle">
+  <p>Наши достигаторы</p>
+    <div class="text-S buffer-bottom">
+      <% if @users.present? %>
+        <% @users.each do |user| %>
+          <%= image_tag(user_avatar(user), class: 'img-icon-sm') %>
+          <%= link_to user.name, user_path(user), class: 'img-icon-sm text-dark-green buffer-right' %>
+        <% end %>
+      <% else %>
+        <div class="text-L text-black">
+          <p>Пока нет :(</p>
+        </div>
+      <% end %>
+    </div>
+
+  <p>Цели</p>
+  <% unless @targets.present? %>
+    <div class="text-L text-black">
+      <p>Пока нет :(</p>
+    </div>
+  <% end %>
+  <%#= link_to "Показать всех достигаторов", users_path, class: 'btn btn-default buffer-bottom' %>
 </div>
 
-<table class="text-S ">
+<table class="text-S" id="desktop_tabs">
   <thead>
   <tr class="text-L">
     <th>Достигатор</th>
@@ -33,3 +53,27 @@
   </tr>
   <% end %>
 </table>
+
+<div class="container text-word-breaker" id="mobile_tabs">
+  <% @targets.order(:created_at).reverse_order.each do |target| %>
+    <div class="table-target-border buffer-bottom">
+      <%= link_to image_tag(user_avatar(target.user), class: 'img-icon'), user_path(target.user) %>
+      <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %><br>
+      <%= link_to target.title, target_path(target),
+                  class: (target.status == 1 ? "btn target-border-title-success target-border-sm buffer-both" :
+                              "btn target-border-title target-border-sm buffer-both") %><br>
+
+      <div class="label label-default text-S ">
+        <%= l target.date, format: "%e %B %Y" %>
+      </div><br>
+
+      <div class="buffer-top">
+        <% if target.status == 1 %>
+          <span class="label label-success text-S">Успех</span>
+        <% else %>
+          <span class="label label-primary text-S">В прогрессе</span>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

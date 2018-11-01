@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="col-md-5 text-S text-bold buffer-both">
+    <%= link_to "Ответить", "#",
+                onclick: "toggleNewComment(); return false",
+                id: "new_comment_link" %>
+  </div>
+  <% if comments.size > 0 %>
+    <div class="col-md-7 text-S text-bold buffer-both">
+      <%= link_to "Комментарии: #{comments.count}", "#",
+                  onclick: "toggleCommentsTree(); return false",
+                  id: "comments_tree_link" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="col-md-5">
+    <div class="comment-form-border" id="new_comment_form">
+      <%= render partial: 'comments/form', locals: { commentable: commentable } %>
+    </div>
+  </div>
+
+  <div class="col-md-7">
+    <div class="" id="comments_tree">
+      <%= render partial: 'comments/comments', locals: { commentable: commentable } %>
+    </div>
+  </div>
+</div>

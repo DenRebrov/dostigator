@@ -11,6 +11,7 @@ class TargetsController < ApplicationController
   def index
     @targets = Target.all
 
+    @users = User.all
     @user = User.find_by(params[:target])
   end
 

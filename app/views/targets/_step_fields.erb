@@ -12,10 +12,13 @@
             <%= f.text_field :name, class: 'form-control' %>
           </div>
 
-          <div class="form-group field">
-            <%#= f.label :status %>
-            <%#= f.select(:status, options_for_select([['Не выполнен', 0], ['Выполнен', 1]]), class: 'form-control') %>
-          </div>
+          <!--<div class="form-group switch-field">-->
+            <!--<div class="switch-title"><b>Шаг сделан?</b></div>-->
+            <!--<%#= f.radio_button :status, 0, id: "switch_step_left_#{@target.id}" %>-->
+            <!--<label for="switch_step_left_<%= @target.id %>" class="switch-no">Нет</label>-->
+            <!--<%#= f.radio_button :status, 1, id: "switch_step_right_#{@target.id}" %>-->
+            <!--<label for="switch_step_right_<%= @target.id %>" class="switch-yes">Да</label>-->
+          <!--</div>-->
 
           <div class="form-group">
             <%= f.radio_button :status, 0 %>
@@ -23,6 +26,9 @@
             <%= f.radio_button :status, 1 %>
             <%= label :status_complete, 'Шаг выполнен!' %>
           </div>
+
+
+
 
           <h4><%= link_to_remove_association "Удалить шаг", f, class: "label label-danger" %></h4>
         </div>

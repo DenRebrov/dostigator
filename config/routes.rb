@@ -10,6 +10,4 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     resources :comments, only: [:edit, :create, :update, :destroy]
   end
-
-  resources :answers, only: [:create, :destroy]
 end
