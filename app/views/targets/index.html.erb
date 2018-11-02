@@ -1,5 +1,11 @@
-<div class="text-center text-primary text-subtitle">
-  <p>Цели</p>
+<div class="text-center text-primary">
+  <div class="text-title" id="desktop_tabs">
+    <p>Цели</p>
+  </div>
+  <div class="text-subtitle" id="mobile_tabs">
+    <p>Цели</p>
+  </div>
+
   <%= link_to "Показать всех достигаторов", users_path, class: 'btn btn-default buffer-bottom' %>
   <% unless @targets.present? %>
     <div class="text-L text-black">
@@ -22,8 +28,8 @@
   <tr>
     <td><%= link_to image_tag(user_avatar(target.user), class: 'img-icon'), user_path(target.user) %>
       <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %></td>
-
-    <td><%= link_to target.title, target_path(target), class: (target.status == 1 ? "btn text-S target-border-title-success text-white text-bold" :
+    <td><%= link_to target.title, target_path(target), class: (target.status == 1 ?
+                                                                   "btn text-S target-border-title-success text-white text-bold" :
                                                                    "btn text-S target-border-title text-white text-bold") %></td>
     <td>
         <div class="label label-default text-S">
@@ -43,11 +49,12 @@
 <div class="text-word-breaker" id="mobile_tabs">
   <% @targets.order(:created_at).reverse_order.each do |target| %>
     <div class="table-target-border buffer-bottom">
-      <%= link_to image_tag(user_avatar(target.user), class: 'img-icon'), user_path(target.user) %>
-      <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %><br>
-      <%= link_to target.title, target_path(target),
-                  class: (target.status == 1 ? "btn target-border-title-success target-border-sm buffer-both" :
-                              "btn target-border-title target-border-sm buffer-both") %><br>
+      <%= link_to image_tag(user_avatar(target.user), class: 'img-icon-sm buffer-bottom'), user_path(target.user) %>
+      <%= link_to target.user.name, user_path(target.user), class: "btn text-bold buffer-bottom" %><br>
+      <div class="buffer-bottom">
+        <%= link_to target.title, target_path(target),
+                    class: (target.status == 1 ? "target-border-sm-success" : "target-border-sm ") %><br>
+      </div>
 
       <div class="label label-default text-S ">
         <%= l target.date, format: "%e %B %Y" %>

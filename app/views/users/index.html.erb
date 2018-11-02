@@ -1,5 +1,10 @@
-<div class="text-center text-primary text-subtitle">
-  <p>Достигаторы</p>
+<div class="text-center text-primary">
+  <div class="text-title" id="desktop_tabs">
+    <p>Достигаторы</p>
+  </div>
+  <div class="text-subtitle" id="mobile_tabs">
+    <p>Достигаторы</p>
+  </div>
   <%= link_to "Показать все цели", targets_path, class: 'btn btn-default buffer-bottom' %>
 </div>
 
@@ -24,8 +29,9 @@
   <% if @users.present? %>
     <% @users.order(:created_at).reverse_order.each do |user| %>
       <div class="user-border buffer-bottom">
-        <%= link_to image_tag(user_avatar(user), class: 'img-icon'), user_path(user) %>
+        <%= link_to image_tag(user_avatar(user), class: 'img-icon-sm'), user_path(user) %>
         <%= link_to user.name, user_path(user), class: "btn text-bold" %><br>
+        <%= user.created_at %>
       </div>
     <% end %>
   <% else %>

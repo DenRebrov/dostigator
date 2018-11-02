@@ -1,13 +1,17 @@
 <%# Представление на странице пользователя %>
-<div class="container">
+<div class="container text-word-breaker">
   <div class="col-md-4">
     <%= image_tag user_avatar(@user), class: 'img-medium thumbnail' %>
   </div>
 
   <div class="col-md-8">
-    <div class="text-title">
+    <div class="text-title" id="desktop_tabs">
       <%= @user.name %>
     </div>
+    <div class="text-subtitle" id="mobile_tabs">
+      <%= @user.name %>
+    </div>
+
     <%= link_to "Редактировать профиль", edit_user_path, class: 'btn btn-default buffer-bottom' if @user == current_user %>
     <% target_completed = [] %>
       <% @targets.each do|target| %>
