@@ -1,25 +1,11 @@
 <div class="text-center text-primary text-subtitle">
-  <p>Наши достигаторы</p>
-    <div class="text-S buffer-bottom">
-      <% if @users.present? %>
-        <% @users.each do |user| %>
-          <%= image_tag(user_avatar(user), class: 'img-icon-sm') %>
-          <%= link_to user.name, user_path(user), class: 'img-icon-sm text-dark-green buffer-right' %>
-        <% end %>
-      <% else %>
-        <div class="text-L text-black">
-          <p>Пока нет :(</p>
-        </div>
-      <% end %>
-    </div>
-
   <p>Цели</p>
+  <%= link_to "Показать всех достигаторов", users_path, class: 'btn btn-default buffer-bottom' %>
   <% unless @targets.present? %>
     <div class="text-L text-black">
       <p>Пока нет :(</p>
     </div>
   <% end %>
-  <%#= link_to "Показать всех достигаторов", users_path, class: 'btn btn-default buffer-bottom' %>
 </div>
 
 <table class="text-S" id="desktop_tabs">
@@ -54,7 +40,7 @@
   <% end %>
 </table>
 
-<div class="container text-word-breaker" id="mobile_tabs">
+<div class="text-word-breaker" id="mobile_tabs">
   <% @targets.order(:created_at).reverse_order.each do |target| %>
     <div class="table-target-border buffer-bottom">
       <%= link_to image_tag(user_avatar(target.user), class: 'img-icon'), user_path(target.user) %>

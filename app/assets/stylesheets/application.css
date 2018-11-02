@@ -53,6 +53,10 @@ body {
     margin-right: 16px;
 }
 
+.buffer-right-max {
+    margin-right: 30px;
+}
+
 .img-icon {
     height: 60px;
     width: auto;
@@ -60,7 +64,7 @@ body {
 }
 
 .img-icon-sm {
-    height: 40px;
+    height: 38px;
     width: auto;
     border-radius: 50%;
 }

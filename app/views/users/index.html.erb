@@ -1,0 +1,60 @@
+<div class="text-center text-primary text-subtitle">
+  <p>Достигаторы</p>
+  <%= link_to "Показать все цели", targets_path, class: 'btn btn-default buffer-bottom' %>
+</div>
+
+<div class="text-center text-word-breaker" id="desktop_tabs">
+  <% if @users.present? %>
+    <% @users.order(:created_at).reverse_order.each do |user| %>
+      <div class="users-list-item">
+        <div class="text-bold text-M">
+          <%= link_to user.name, user_path(user), class: 'img-icon text-dark-green buffer-right-max' %>
+        </div>
+        <%= link_to image_tag(user_avatar(user), class: 'img-icon buffer-right buffer-right-max'), user_path(user) %>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="text-L text-black">
+      <p>Пока нет :(</p>
+    </div>
+  <% end %>
+</div>
+
+<div class="text-word-breaker" id="mobile_tabs">
+  <% if @users.present? %>
+    <% @users.order(:created_at).reverse_order.each do |target| %>
+      <div class="table-target-border buffer-bottom">
+        <%= link_to image_tag(user_avatar(target.user), class: 'img-icon'), user_path(target.user) %>
+        <%= link_to target.user.name, user_path(target.user), class: "btn text-bold" %><br>
+        <%= link_to target.title, target_path(target),
+                    class: (target.status == 1 ? "btn target-border-title-success target-border-sm buffer-both" :
+                                "btn target-border-title target-border-sm buffer-both") %><br>
+
+        <div class="label label-default text-S ">
+          <%= l target.date, format: "%e %B %Y" %>
+        </div><br>
+
+        <div class="buffer-top">
+          <% if target.status == 1 %>
+            <span class="label label-success text-S">Успех</span>
+          <% else %>
+            <span class="label label-primary text-S">В прогрессе</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+  <% end %>
+</div>
+
+      <!--<div class="container">-->
+      <!--<div class="row">-->
+      <!--<div class="table-target-border buffer-bottom col-md-6">-->
+      <!--<%#= link_to user.name, user_path(user), class: 'img-icon-sm text-dark-green buffer-right' %>-->
+      <!--</div>-->
+      <!--<div class="col-md-6">-->
+      <!--<%#= link_to image_tag(user_avatar(user), class: 'img-icon-sm'), user_path(user) %>-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--</div>-->
+

@@ -5,6 +5,10 @@ class UsersController < ApplicationController
   # Задаем объект @user для шаблонов и экшенов
   before_action :set_current_user, except: [:show]
 
+  def index
+    @users = User.all
+  end
+
   def show
     @user = User.find(params[:id])
 

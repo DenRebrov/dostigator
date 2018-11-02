@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :steps, only: [:create, :destroy]
   end
 
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:show, :edit, :update, :index] do
     resources :comments, only: [:edit, :create, :update, :destroy]
   end
 end
