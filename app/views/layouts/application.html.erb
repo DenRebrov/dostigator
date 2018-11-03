@@ -80,14 +80,25 @@
         <div class="collapse navbar-collapse navbar-responsive-collapse pull-left text-L">
           <ul class="nav navbar-form">
             <% if user_signed_in? %>
+              <%= link_to "", new_user_session_path,
+                          class: "btn btn-success buffer-top-1 glyphicon glyphicon-star" %>
               <%= link_to "Новая цель", new_target_path, class: 'label label-success' %>
               <div class="buffer-top">
+                <%= link_to "", new_user_session_path,
+                            class: "btn btn-info buffer-top-1 glyphicon glyphicon-user" %>
                 <%= link_to "#{current_user.name}", current_user, class: 'buffer-right label label-info' %><br>
+                <%= link_to "", new_user_session_path,
+                            class: "btn btn-danger buffer-top-1 glyphicon glyphicon-log-out" %>
                 <%= link_to "Выйти", destroy_user_session_path, :method => :delete, class: 'label label-danger' %>
               </div>
             <% else %>
               <div class="pull-right">
+                <%#= glyphicon('check') %>
+                <%= link_to "", new_user_session_path,
+                            class: "btn btn-primary buffer-top-1 glyphicon glyphicon-log-in" %>
                 <%= link_to "Вход", new_user_session_path, class: 'label label-primary' %><br>
+                <%= link_to "", new_user_session_path,
+                            class: "btn btn-success buffer-top-1 glyphicon glyphicon-registration-mark" %>
                 <%= link_to "Регистрация", new_user_registration_path, class: 'label label-success' %>
               </div>
             <% end %>

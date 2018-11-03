@@ -7,7 +7,7 @@
 .target-border-sm-success {
     font-size: 20px;
     font-weight: bold;
-    color: #9abbff;
+    color: #428BCA;
 }
 
 .target-border-sm-success {
@@ -55,4 +55,10 @@
     background-color: #9abbff;
     padding: 15px; /* Поля вокруг текста */
     border-radius: 5px;
+}
+
+.table-target-border {
+    background-color: whitesmoke;
+    padding: 20px;
+    border-radius: 50%;
 }

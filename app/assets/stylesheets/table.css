@@ -15,8 +15,8 @@ hr {
     height: 2px; /* Толщина линии */
 }
 
-.table-target-border {
+.target-step-border {
     background-color: whitesmoke;
-    padding: 20px;
+    padding: 10px;
     border-radius: 50%;
 }

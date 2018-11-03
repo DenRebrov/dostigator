@@ -20,6 +20,10 @@ body {
     font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
 }
 
+.buffer-top-1 {
+    margin-top: 2px;
+}
+
 .buffer-top {
     margin-top: 20px;
 }

@@ -1,26 +1,43 @@
 <div class="container text-word-breaker">
   <%= content_tag :div, class: (@target.status == 1 ? "target-border-title-success" : "target-border-title") do %>
     <div class="panel-heading">
-      <div class="text-white text-subtitle">
+      <div class="text-white text-subtitle" id="desktop_tabs">
         <%= link_to image_tag(user_avatar(@user), class: 'img-icon'), user_path(@user) %>
         <%= @target.title %>
+      </div>
+      <div class="text-white text-M text-bold" id="mobile_tabs">
+        <%= link_to image_tag(user_avatar(@user), class: 'img-icon-sm'), user_path(@user) %>
+        <%= link_to @user.name, user_path(@user), class: "text-S" %><br>
+        <div class="buffer-top-mini">
+        <%= @target.title %>
+        </div>
       </div>
     </div>
 
     <%= content_tag :div, class: (@target.status == 1 ? "row target-border-success" : "row target-border") do %>
       <div class="col-md-9">
         <% @target.steps.order('created_at ASC').each do |step| %>
-          <div class="text-L buffer-bottom-mini">
+          <div class="text-L buffer-bottom-mini" id="desktop_tabs">
             <%= content_tag :div, class: (step.status == 1 ? "label label-success" : "label label-info") do %>
               <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
               <%= step.name %>
             <% end %>
           </div>
+
+          <div class="target-step-border text-S buffer-bottom-mini" id="mobile_tabs">
+              <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
+              <%= step.name %>
+          </div>
         <% end %>
       </div>
 
       <div class="col-md-3">
-        <div class="text-L buffer-bottom-mini ">
+        <div class="text-L " id="desktop_tabs">
+          <div class="label label-default">
+            <%= l @target.date, format: "%e %B %Y" %>
+          </div>
+        </div>
+        <div class="text-S " id="mobile_tabs">
           <div class="label label-default">
             <%= l @target.date, format: "%e %B %Y" %>
           </div>
