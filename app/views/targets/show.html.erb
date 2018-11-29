@@ -7,54 +7,53 @@
       </div>
       <div class="text-white text-M text-bold" id="mobile_tabs">
         <%= link_to image_tag(user_avatar(@user), class: 'img-icon-sm'), user_path(@user) %>
-        <%= link_to @user.name, user_path(@user), class: "text-S" %><br>
+        <%= link_to @user.name, user_path(@user), class: "text-S" %>
         <div class="buffer-top-mini">
-        <%= @target.title %>
+          <%= @target.title %>
         </div>
       </div>
     </div>
 
-    <%= content_tag :div, class: (@target.status == 1 ? "row target-border-success" : "row target-border") do %>
-      <div class="col-md-9">
-        <% @target.steps.order('created_at ASC').each do |step| %>
-          <div class="text-L buffer-bottom-mini" id="desktop_tabs">
-            <%= content_tag :div, class: (step.status == 1 ? "label label-success" : "label label-info") do %>
-              <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
-              <%= step.name %>
-            <% end %>
-          </div>
-
-          <div class="target-step-border text-S buffer-bottom-mini" id="mobile_tabs">
-              <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
-              <%= step.name %>
-          </div>
-        <% end %>
+    <div class="text-center">
+      <div class="text-L " id="desktop_tabs">
+        <div class="label label-default">
+          <%= l @target.date, format: "%e %B %Y" %>
+        </div>
+      </div>
+      <div class="text-S " id="mobile_tabs">
+        <div class="label label-default">
+          <%= l @target.date, format: "%e %B %Y" %>
+        </div>
       </div>
 
-      <div class="col-md-3">
-        <div class="text-L " id="desktop_tabs">
-          <div class="label label-default">
-            <%= l @target.date, format: "%e %B %Y" %>
-          </div>
+      <% if current_user_can_edit?(@target) %>
+        <div class="buffer-top ">
+          <%= link_to "", edit_target_path, class: 'btn btn-primary glyphicon glyphicon-edit' %>
+          <%= link_to "", target_path(@target),
+                      :method => :delete,
+                      data: {confirm: 'Точно удалить эту цель?'},
+                      class: 'btn btn-danger btn-sm glyphicon glyphicon-remove' %>
         </div>
-        <div class="text-S " id="mobile_tabs">
-          <div class="label label-default">
-            <%= l @target.date, format: "%e %B %Y" %>
-          </div>
-        </div>
-
-        <% if current_user_can_edit?(@target) %>
-          <div class="buffer-top ">
-            <%= link_to "Изменить", edit_target_path, class: 'btn btn-primary' %>
-            <%= link_to "Удалить", target_path(@target),
-                        :method => :delete,
-                        data: {confirm: 'Точно удалить эту цель?'},
-                        class: 'btn btn-danger' %>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
+
+  <div class="buffer-top">
+    <% @target.steps.order('created_at ASC').each do |step| %>
+      <div class="text-L buffer-bottom-mini" id="desktop_tabs">
+        <%= content_tag :div, class: (step.status == 1 ? "label label-success" : "label label-primary") do %>
+          <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
+          <%= step.name %>
+        <% end %>
+      </div>
+
+      <%= content_tag :div, id: "mobile_tabs", class: (step.status == 1 ? "target-step-border-success text-S buffer-bottom-mini" :
+                                                           "target-step-border text-S buffer-bottom-mini") do %>
+        <%= content_tag :span, class: (step.status == 1 ? "glyphicon glyphicon-check" : "glyphicon glyphicon-unchecked") do %><% end %>
+        <%= step.name %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= render partial: 'comments/comments_links', locals: { commentable: @commentable, comments: @comments } %>

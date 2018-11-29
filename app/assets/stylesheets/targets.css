@@ -45,20 +45,26 @@
     color: white;
 }
 
-.target-border-title-success {
-    background-color: #94f39d;
-    padding: 15px; /* Поля вокруг текста */
-    border-radius: 5px;
-}
-
 .target-border-title {
     background-color: #9abbff;
     padding: 15px; /* Поля вокруг текста */
-    border-radius: 5px;
+    border-radius: 40px;
 }
 
-.table-target-border {
+.target-border-title-success {
+    background-color: #94f39d;
+    padding: 15px; /* Поля вокруг текста */
+    border-radius: 40px;
+}
+
+.target-step-border {
     background-color: whitesmoke;
     padding: 20px;
-    border-radius: 50%;
+    border-radius: 20px;
+}
+
+.target-step-border-success {
+    background-color: #94f39d;
+    padding: 20px;
+    border-radius: 20px;
 }
